@@ -1,0 +1,75 @@
+/* Estilos generales */
+body {
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.bg-dark-blue {
+    background-color: #1a1a2e;
+}
+
+.text-accent {
+    color: #45B69C;
+}
+
+/* Botones del sidebar */
+.theme-btn {
+    background: #2c2c54;
+    color: white !important;
+    text-align: left;
+    transition: all 0.3s;
+    border: none;
+}
+
+.theme-btn:hover {
+    background: #45B69C;
+    transform: translateX(5px);
+}
+
+/* Mapa */
+#map {
+    height: 100vh;
+    background: #f8f9fa;
+}
+
+/* Popups personalizados */
+.leaflet-popup-content {
+    min-width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.popup-content p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+/* Leyenda */
+.legend-container {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 1px solid #666;
+}
