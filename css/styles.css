@@ -3,24 +3,30 @@ body {
     overflow: hidden;
     font-family: 'Segoe UI', sans-serif;
 }
+
+.container-fluid {
+    height: 100vh;
+}
+
+.row.g-0 {
+    height: 100%;
+}
+
+/* Sidebar izquierdo */
 .sidebar {
     height: 100vh;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
-.sidebar-right {
-    height: 100vh;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-    transition: width 0.3s ease-in-out;
-}
-.sidebar-right.collapsed {
-    width: 0;
-}
+
 .bg-dark-blue {
     background-color: #1a1a2e;
 }
+
 .text-accent {
     color: #45B69C;
 }
+
 /* Botones del sidebar */
 .theme-btn {
     background: #2c2c54;
@@ -28,41 +34,50 @@ body {
     text-align: left;
     transition: all 0.3s;
     border: none;
+    width: 100%;
 }
+
 .theme-btn:hover {
     background: #45B69C;
     transform: translateX(5px);
 }
+
 /* Mapa */
 #map {
     height: 100vh;
     background: #f8f9fa;
 }
+
 /* Popups personalizados */
 .leaflet-popup-content {
     min-width: 200px;
     max-height: 300px;
     overflow-y: auto;
 }
+
 .popup-content p {
     margin: 5px 0;
     font-size: 0.9em;
 }
+
 /* Leyenda */
 .legend-container {
     padding: 10px;
 }
+
 .legend-item {
     display: flex;
     align-items: center;
     margin: 5px 0;
 }
+
 .legend-color {
     width: 20px;
     height: 20px;
     margin-right: 10px;
     border: 1px solid #666;
 }
+
 /* Estilos para etiquetas de las capas */
 .label-icon {
     background-color: rgba(255, 255, 255, 0.4);
@@ -74,36 +89,92 @@ body {
     white-space: nowrap;
     pointer-events: none; /* Evitar que las etiquetas interfieran con los eventos del mapa */
 }
+
 /* Estilos para el nuevo sidebar derecho */
-.layers-container, .legend-container {
+.layers-container,
+.legend-container {
     padding: 5px;
 }
+
 /* Botón de colapso */
 .btn-secondary {
     background-color: #6c757d;
     border-color: #6c757d;
 }
+
 .btn-secondary:hover {
     background-color: #5a6268;
     border-color: #545b62;
 }
+
 /* Ajustes adicionales para el sidebar derecho */
-.sidebar-right .bg-white {
-    height: 100%;
+.offcanvas-body {
     display: flex;
     flex-direction: column;
-}
-.sidebar-right button.btn-secondary {
-    margin-bottom: 10px;
-}
-.sidebar-right .collapse {
-    flex-grow: 1;
     overflow-y: auto;
 }
-.sidebar-right .collapse.show {
-    display: flex;
-    flex-direction: column;
+
+.collapse.show {
+    flex-grow: 1;
 }
-#sidebar-toggle-button {
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    #map {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .offcanvas {
+        width: 100% !important;
+    }
+}
+
+/* Estilos específicos para el botón flotante */
+#sidebar-toggle-button,
+#sidebar-left-toggle-button {
     z-index: 1050; /* Asegurar que esté sobre el mapa y el sidebar */
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #45B69C; /* Color destacado */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50%; /* Hacerlo circular */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para destacarlo */
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect para el botón flotante */
+#sidebar-toggle-button:hover,
+#sidebar-left-toggle-button:hover {
+    background-color: #38a78c; /* Un tono más oscuro */
+    transform: translateY(-50%) scale(1.1); /* Efecto de agrandamiento */
+}
+
+/* Posicionamiento de los botones flotantes */
+#sidebar-toggle-button {
+    right: 15px;
+}
+
+#sidebar-left-toggle-button {
+    left: 15px;
+}
+
+@media (max-width: 768px) {
+    #sidebar-toggle-button {
+        right: 10px; /* Ajustar aún más el margen en móviles */
+        padding: 12px 16px; /* Hacerlo un poco más grande */
+    }
+
+    #sidebar-left-toggle-button {
+        left: 10px; /* Ajustar aún más el margen en móviles */
+        padding: 12px 16px; /* Hacerlo un poco más grande */
+    }
 }
