@@ -18,10 +18,10 @@
     <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar Izquierdo -->
-            <div class="col-md-2 sidebar p-0">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <!-- Sidebar Izquierdo (Responsive) -->
+            <div class="col-md-2 d-none d-md-block sidebar p-0">
                 <div class="bg-dark-blue p-3 h-100">
                     <h5 class="text-accent mb-4"><i class="fas fa-layer-group"></i> Visor Territorial</h5>
                     <div class="nav flex-column" id="theme-buttons">
@@ -40,16 +40,48 @@
                     </div>
                 </div>
             </div>
-            <!-- Mapa y Controles -->
-            <div class="col-md-10 p-0">
+
+            <!-- Sidebar Izquierdo (Offcanvas para móviles) -->
+            <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+                <div class="offcanvas-header bg-dark-blue text-white">
+                    <h5 class="offcanvas-title" id="offcanvasLeftLabel">Visor Territorial</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body bg-dark-blue">
+                    <div class="nav flex-column" id="theme-buttons-mobile">
+                        <button class="btn theme-btn mb-2" data-theme="mineria">
+                            <i class="fas fa-mountain"></i> Minería
+                        </button>
+                        <button class="btn theme-btn mb-2" data-theme="energia">
+                            <i class="fas fa-bolt"></i> Energía
+                        </button>
+                        <button class="btn theme-btn mb-2" data-theme="telecomunicaciones">
+                            <i class="fas fa-tower-broadcast"></i> Telecomunicaciones
+                        </button>
+                        <button class="btn theme-btn mb-2" data-theme="agricultura">
+                            <i class="fas fa-seedling"></i> Agricultura
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mapa -->
+            <div class="col-12 col-md-10 p-0">
                 <div id="map"></div>
             </div>
         </div>
     </div>
-    <!-- Botón para abrir/cerrar el sidebar derecho -->
+
+    <!-- Botón Flotante para Sidebar Derecho -->
     <button class="btn btn-primary position-fixed top-50 end-0 translate-middle-y me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="sidebar-toggle-button">
         <i class="fas fa-arrow-left"></i>
     </button>
+
+    <!-- Botón Flotante para Sidebar Izquierdo (Visible solo en móviles) -->
+    <button class="btn btn-primary position-fixed top-50 start-0 translate-middle-y ms-3 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft" id="sidebar-left-toggle-button">
+        <i class="fas fa-arrow-right"></i>
+    </button>
+
     <!-- Sidebar Derecho -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
@@ -57,21 +89,22 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-3">
-            <button class="btn btn-secondary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#layers-collapse" aria-expanded="true" aria-controls="layers-collapse">
+            <button class="btn btn-secondary w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#layers-collapse" aria-expanded="true" aria-controls="layers-collapse">
                 <i class="fas fa-layer-group"></i> Capas Temáticas
             </button>
             <div class="collapse show" id="layers-collapse">
                 <div class="layers-container" id="sidebar-layers" style="height: 65%; overflow-y: auto;">
-                    <!-- Aquí se insertará el control de capas -->
+                    <!-- Aquí se insertarán las capas temáticas -->
                 </div>
-                <button class="btn btn-secondary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#base-layers-collapse" aria-expanded="true" aria-controls="base-layers-collapse">
+                <button class="btn btn-secondary w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#base-layers-collapse" aria-expanded="true" aria-controls="base-layers-collapse">
                     <i class="fas fa-globe"></i> Capas Base
                 </button>
                 <div id="sidebar-capas-base" class="base-layers-container" style="height: 20%; overflow-y: auto;">
                     <!-- Aquí se insertarán las capas base -->
                 </div>
             </div>
-            <button class="btn btn-secondary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#legend-collapse" aria-expanded="true" aria-controls="legend-collapse">
+
+            <button class="btn btn-secondary w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#legend-collapse" aria-expanded="true" aria-controls="legend-collapse">
                 <i class="fas fa-map"></i> Leyenda
             </button>
             <div class="collapse show" id="legend-collapse">
@@ -81,6 +114,7 @@
             </div>
         </div>
     </div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet-label@0.2.1-0/dist/leaflet.label.min.js"></script>
