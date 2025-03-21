@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Energia_Termoelectricas",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 1, "ID_GE_TERM": 181, "NOMBRE": "PUNTA COLORADA", "PROPIEDAD": "CIA. BARRICK CHILE GENERACION LTDA", "TIPO": "TERMOELECTRICA", "MEDIO_GENE": " ", "COMBUSTIBL": "PETROLEO DIESEL", "POTENCIAMW": 15.856, "UNIDADES": 1, "RCA": "111/2007", "SIST_ELECT": "SEN", "ESTADO": "OPERATIVA", "F_OPERACIO": "2010-12-02T21:00:00", "COORD_ESTE": 301710.0, "COORD_NORT": 6749641.0, "REGION": "04", "PROVINCIA": "041", "COMUNA": "04104", "FUENTE_BAS": "CNE", "FECH_CREA": "2014-12-09T21:00:00", "FECH_ACT": "2024-06-29T20:00:00", "Origen del Dato": "Visor de Capas del Ministerio de Energia, IDE Energia, disponible en https://ide-energia.minenergia.cl/portal/apps/webappviewer/index.html?id=5c526a138b1449458e0667b2235d2b19" }, "geometry": { "type": "Point", "coordinates": [ -71.042861444999971, -29.366799606999962 ] } }
+]
+}
