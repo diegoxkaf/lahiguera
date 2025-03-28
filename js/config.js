@@ -1,7 +1,7 @@
 // Configuración de temas y estilos
 const temasConfig = {
     mineria: {
-        capas: ['relaves_mineros', 'Mineria_Instalaciones_Mineras','Mineria_Propiedad_Minera','limite_comunal'],
+        capas: ['relaves_mineros', 'Mineria_Instalaciones_Mineras','Mineria_Yacimientos','Mineria_Propiedad_Minera','limite_comunal'],
         estilo: {
             relaves_mineros: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -77,6 +77,78 @@ const temasConfig = {
                     'Estado': 'Estado de la Instalacion',
                     'Cota':'Cota',
                     'Origen del Dato': 'Origen del Dato',
+                    'Ultima Actualizacion del Dato': 'Ultima Actualizacion del Dato',
+                }
+            },
+            Mineria_Yacimientos: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'GRUPO_RECU', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Yacimientos Mineros', // Nombre personalizado de la Capa
+                iconos: {
+                    'Ag': 'ag.png',
+                    ' ': 'sin_valor.png',
+                    'Ag-(Cu)': 'ag_cu.png',
+                    'Ag-(Cu, Mn)':'ag_cu_mn.png',
+                    'Au':'au.png',
+                    'Au, Ag':'au_ag.png',
+                    'Au, Ag-(Cu, Pb)':'au_ag_cu_pb.png',
+                    'Au, Ag-(Pb, Zn, Cu)':'au_ag_pb_zn_cu.png',
+                    'Au, Cu':'au_cu.png',
+                    'Au, Cu, Ag':'au_cu_ag.png',
+                    'Au, Cu-(Ag)':'au_cu_ag2.png',
+                    'Au, Cu-(Fe)':'au_cu_fe.png',
+                    'Au-(Ag)':'au_ag2.png',
+                    'Au-(Ag, Cu)':'au_ag_cu.png',
+                    'Au-(Cu)':'au_cu2.png',
+                    'Au-(Cu, Ag)':'au_cu_ag3.png',
+                    'Au-(Cu, Fe)':'au_cu_fe2.png',
+                    'Au-(Cu, Pb, Zn)':'au_cu_pb_zn.png',
+                    'Au-(Pb, Ag, Cu)':'au_cu_ag_cu.png',
+                    'Baritina':'baritina.png',
+                    'Cu':'cu.png',
+                    'Cu, Ag':'cu_ag.png',
+                    'Cu, Ag, Au':'cu_ag_au.png',
+                    'Cu, Au':'cu_au.png',
+                    'Cu, Au, Ag':'cu_au_ag.png',
+                    'Cu, Au, Fe':'cu_au_fe.png',
+                    'Cu, Au-(Fe)':'cu_au_fe2.png',
+                    'Cu, Au-(Pb, Zn)':'cu_au_pb_zn.png',
+                    'Cu, Fe':'cu_fe.png',
+                    'Cu-(Ag)':'cu_ag2.png',
+                    'Cu-(Ag, Au)':'cu_ag_au2.png',
+                    'Cu-(Ag, Fe)':'cu_ag_fe.png',
+                    'Cu-(Ag, Fe, Pb)':'cu_ag_fe_pb.png',
+                    'Cu-(Au)':'cu_au2.png',
+                    'Cu-(Au, Ag)':'cu_au_ag2.png',
+                    'Cu-(Au, Fe)':'cu_au_fe3.png',
+                    'Cu-(Au, Pb, Zn)':'cu_au_pb_zn2.png',
+                    'Cu-(Fe)':'cu_fe2.png',
+                    'Cu-(Fe, Au)':'cu_fe_au.png',
+                    'Fe':'fe.png',
+                    'Fe, Au':'fe_au.png',
+                    'Fe, Cu':'fe_cu.png',
+                    'Fe, Cu, Au':'fe_cu_au.png',
+                    'Fe-(Cu, Au)':'fe_cu_au2.png',
+                    'Rocas Fosfóricas':'rocas_fosforicas.png',
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: ['ID_YACIMIE', 'NOMBRE', 'GRUPO_RECU','TAMANO_YAC','ACTIVIDAD_','PROPIETARI','ACCESIBILI','URL_PDF', 'Origen Informacion', 'Ultima Actualizacion del Dato' ],
+                alias: {
+                    'ID_YACIMIE': 'Codigo del Yacimiento',
+                    'NOMBRE': 'Nombre del Yacimiento',
+                    'GRUPO_RECU': 'Tipo de Recurso',
+                    'TAMANO_YAC': 'Tamaño del Yacimiento',
+                    'ACTIVIDAD_': 'Actividad',
+                    'PROPIETARI': 'Propietario',
+                    'ACCESIBILI': 'Accesibilidad',
+                    'URL_PDF':'Informacion',
+                    'Origen Informacion': 'Origen del Dato',
                     'Ultima Actualizacion del Dato': 'Ultima Actualizacion del Dato',
                 }
             },
@@ -401,6 +473,415 @@ const temasConfig = {
             }
         },
     },
+    agricultura: {
+        capas: ['Agro_Derechos_Agua', 'Agro_apr', 'Agro_plantaciones_frutales','Agro_catastro_fruticola','hidrografia'],
+        estilo: {
+            Agro_Derechos_Agua: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'Uso del Ag', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Derechos de Agua', // Nombre personalizado de la Capa
+                iconos: {
+                    'Bebida/Uso Domestico/Saneamiento': 'Derechos Agua.png',
+                    'Riego': 'Derechos Riego.png',
+                    'Uso Minero': 'Derechos Mineria.png',
+                    'Sin Informacion': 'Derechos_sininfo.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: ['Código de', 'Nombre Sol', 'Unidad de','Fecha de R','Nº Resolu','Fecha Toma','Tipo Derec', 'Naturaleza','Uso del Ag','Cuenca','Fuente','Caudal An','Ejercicio','Origen','Ult_Actual','Link_Data'],
+                alias: {
+                    'Código de': 'Codigo de Expediente',
+                    'Nombre Sol': 'Nombre del Solicitante',
+                    'Unidad de': 'Unidad de resolucion /Oficio/C.B.R.',
+                    'Fecha de R': 'Fecha de Resolucion / Envio al Juez / Inscripcion C.B.Rs',
+                    'Nº Resolu':'N° Resolución/ Oficio/ Fojas | N° CBR',
+                    'Fecha Toma':'Fecha Toma Razon',
+                    'Tipo Derec':'Tipo de Derecho',
+                    'Naturaleza':'Naturaleza del Agua',
+                    'Uso del Ag':'Uso del Agua',
+                    'Cuenca':'Nombre de la Cuenca',
+                    'Fuente':'Fuente de Origen',
+                    'Caudal An':'Caudal Anual Promedio en Lt/s',
+                    'Ejercicio':'Ejercicio del Derecho',
+                    'Origen':'Origen de la Informacion',
+                    'Ult_Actual':'Ultima consulta realizada de la informacion',
+                    'Link_Data':'Direcccion de acceso a la fuente de los datos',
+                }
+            },
+            Agro_apr: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'COMUNA', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Servicios Sanitarios Rurales', // Nombre personalizado de la Capa
+                iconos: {
+                    'LA HIGUERA': 'Torre Agua2.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: ['NOMBRE', 'FUENTE', 'FECHA_ACTUALIZACION','LEVANTAMIENTO','Descripcion','Origen Data'],
+                alias: {
+                    'NOMBRE': 'Nombre de la Instalacion',
+                    'FUENTE': 'Fuente',
+                    'FECHA_ACTUALIZACION': 'Fecha Actualizacion Dato',
+                    'LEVANTAMIENTO':'Levantamiento',
+                    'Descripcion':'Descripcion',
+                    'Origen Data':'Origen de la Informacion'
+                }
+            },
+            Agro_plantaciones_frutales: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'Especie', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Catastro Fruticola - Plantaciones', // Nombre personalizado de la Capa
+                atributo: 'Especie',
+                colores: {
+                    'Olivo': '#5F1B00',
+                    'Lima': '#91300A',
+                    'Limonero': '#D34F1E',
+                    'Nectarino': '#ECA106',
+                },
+                popupCampos: ['Comuna', 'Especie', 'Variedad','Año plantacion','Nº Arboles','Superficie','Descripcion','Origen del Dato'],
+                alias: {
+                    'Comuna': 'Comuna',
+                    'Especie': 'Especia',
+                    'Variedad': 'Variedad',
+                    'Año plantacion':'Año Plantacion',
+                    'Nº Arboles':'Nº Arboles',
+                    'Superficie':'Superficie',
+                    'Descripcion':'Descripcion',
+                    'Origen del Dato':'Origen del Dato',
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#E83A14', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.3 // Transparencia del relleno
+                }
+            },
+            Agro_catastro_fruticola: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'Infraestructura', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Catastro Fruticola - Instalaciones', // Nombre personalizado de la Capa
+                iconos: {
+                    'Agroindustrias': 'Agroindustria.png',
+                    'Camaras de Frio':'CamarasFrio.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: ['Comuna', 'Tipo Empresa', 'Procesamiento','Especie','Infraestructura','Descripcion', 'Origen Data'],
+                alias: {
+                    'Comuna': 'Nombre Comuna',
+                    'Tipo Empresa': 'Tipo de empresa',
+                    'Procesamiento':'Tipo de procesamiento',
+                    'Especie': 'Especie',
+                    'Infraestructura':'Infraestructura',
+                    'Descripcion':'Descripcion',
+                    'Origen Data':'Origen del Dato'
+                }
+            },
+            hidrografia: {
+                type: 'line',
+                nombrePersonalizado: 'Hidrografia',
+                atributo: 'tipo', // Asegúrate de que este atributo exista en tu GeoJSON
+                colores: {
+                    'Laguna': '#E8F6EF',
+                    'Costa': '#E8F6EF',
+                    'Isla': '#E8F6EF',
+                    'Quebrada': '#B8DFD8'
+                },// Configuracion del Estilo Base de la Linea (Ancho, transparencia, Segmentacion de la Linea)
+                estiloBase: {
+                    weight: 4,
+                    opacity: 0.8,
+                    dashArray: '1'
+                },
+                popupCampos: ['nombre', 'tipo', 'Descripcion', 'Origen del Dato','Ultima Actualizacion'],
+                alias: {
+                    'nombre': 'Nombre',
+                    'tipo': 'Tipo',
+                    'Descripcion': 'Descripcion',
+                    'Origen del Dato': 'Origen del Dato',
+                    'Ultima Actualizacion':'Ultima Actualizacion del Dato'
+                },
+            }
+        },
+        leyenda: {
+        }
+    },
+    pesca: {
+        capas: ['pesca_caletas', 'pesca_infraestructura_doh', 'pesca_aaa','pesca_amerb','pesca_concesiones','pesca_planes_manejo','pesca_areas_protegidas'],
+        estilo: {
+            pesca_caletas: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'Comuna', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Caletas Pesqueras Artesanales', // Nombre personalizado de la Capa
+                iconos: {
+                    '4104': 'Caletas_Pesqueras.png',
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: ['Nombre Caleta',
+                             'Cantidad de Organizaciones', 
+                             'Cantidad de Embarcaciones',
+                             'Cantidad de pescadores mujeres',
+                             'Cantidad de pescadores hombre',
+                             'Propiedad del Terreno',
+                             'Principales Actividades',
+                             'Áreas potenciales',
+                             'Cantidad de especies capturadas (TM)',
+                             'Total Algas (TM)',
+                             'Total Crustáceos (TM)',
+                             'Total Moluscos (TM)',
+                             'Total otros (TM)',
+                             'Total Peces (TM)',
+                             'Principales especies',
+                             'Descripcion',
+                             'Origen Data'
+                ],
+                alias: {
+                    'Nombre Caleta': 'Nombre Caleta',
+                    'Cantidad de Organizaciones': 'Cantidad de Organizaciones',
+                    'Cantidad de Embarcaciones': 'Cantidad de Embarcaciones',
+                    'Cantidad de pescadores mujeres': 'Cantidad de pescadoras Mujeres',
+                    'Cantidad de pescadores hombre':'Cantidad de pescadores Hombres',
+                    'Propiedad del Terreno':'Propiedad del Terreno',
+                    'Principales Actividades':'Principales Actividades',
+                    'Áreas potenciales':'Áreas potenciales',
+                    'Cantidad de especies capturadas (TM)':'Cantidad de especies capturadas (TM)',
+                    'Total Algas (TM)':'Total Algas (TM)',
+                    'Total Crustáceos (TM)':'Total Crustáceos (TM)',
+                    'Total Moluscos (TM)':'Total Moluscos (TM)',
+                    'Total otros (TM)':'Total otros (TM)',
+                    'Total Peces (TM)':'Total Peces (TM)',
+                    'Principales especies':'Principales especies',
+                    'Descripcion':'Descripcion',
+                    'Origen Data':'Origen Data'
+                }
+            },
+            pesca_infraestructura_doh: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'COMUNA', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Infraestructura de Obras Portuarias', // Nombre personalizado de la Capa
+                iconos: {
+                    'La Higuera': 'Infraestructura_dop.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'LOCATION',
+                    'NOMBRE', 
+                    'OPERATIVA',
+                    'Descripcion',
+                    'Origen Data'
+       ],
+       alias: {
+           'LOCATION': 'Identificador MOP',
+           'NOMBRE': 'Nombre de la Infraestructura',
+           'OPERATIVA': '¿Operativa?',
+           'Descripcion': 'Descripcion',
+           'Origen Data':'Origen del Dato'
+       }
+            },
+            pesca_aaa: {
+                type: 'line',
+                nombrePersonalizado: 'Areas Apropiadas para la Acuicultura',
+                atributo: 'Tipo de Área apropiada para el ejercicio de la acuicultura', // Asegúrate de que este atributo exista en tu GeoJSON
+                colores: {
+                    '1': '#F3F7EC'
+                },// Configuracion del Estilo Base de la Linea (Ancho, transparencia, Segmentacion de la Linea)
+                estiloBase: {
+                    weight: 4,
+                    opacity: 0.8,
+                    dashArray: '1'
+                },
+                popupCampos: [
+                    'Nombre A.A.A.',
+                    'Tipo de Área apropiada para el ejercicio de la acuicultura',
+                    'N° Decreto SSFFAA', 
+                    'Fecha Decreto SSFFAA',
+                    'Descripcion',
+                    'Origen Dato',
+                    'Ultima Actualizacion Dato'
+                    ],
+                alias: {
+                    'Nombre A.A.A.': 'Nombre del Area',
+                    'Tipo de Área apropiada para el ejercicio de la acuicultura': 'Tipo de Área apropiada para el ejercicio de la acuicultura',
+                    'N° Decreto SSFFAA': 'N° Decreto SSFFAA',
+                    'Fecha Decreto SSFFAA': 'Fecha Decreto SSFFAA',
+                    'Descripcion':'Descripcion',
+                    'Origen Dato':'Origen del Dato',
+                    'Ultima Actualizacion Dato':'Ultima Actualizacion del Dato',
+                },
+            },
+            pesca_amerb: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'Condición en que se encuentra el estado de un Área de Manejo', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Areas de Manejo y Explotacion de Productos Bentonicos', // Nombre personalizado de la Capa
+                atributo: 'Condición en que se encuentra el estado de un Área de Manejo',
+                colores: {
+                    'DECRETADO': '#73BBA3',
+                    'PENDIENTE': '#88D66C',
+                    'RECHAZADO': '#F6FB7A',
+                },
+                popupCampos: [
+                    'Nombre sector AMERB',
+                     'Fecha ingreso de la solicitud AMERB',
+                      'Detalle del estado de la tramitación (Decretada, Tramite, Rechazada)',
+                      'Estado de tramitación del AMERB',
+                      'Condición en que se encuentra el estado de un Área de Manejo',
+                      'Superficie AMERB en hectáreas',
+                      'Especies principales del AMERB',
+                      'Nombre de la o las organización (es) de pescadores artesanales vinculado (s)',
+                    'Número de Registro Pescadores Artesanales',
+                    'Fecha del Registro Pescadores Artesanales',
+                    'Número del decreto del Ministerio de Economía que establece el sector como AMERB (Dcto. MINECON)',
+                    'Período de validez de la destinación del Área de Manejo',
+                    'Descripcion',
+                    'Origen Dato',
+                    'Ultima Actualizacion Dato'
+                    ],
+                alias: {
+                    'Nombre sector AMERB': 'Nombre sector AMERB',
+                    'Fecha ingreso de la solicitud AMERB': 'Fecha ingreso de la solicitud AMERB',
+                    'Detalle del estado de la tramitación (Decretada, Tramite, Rechazada)': 'Detalle del estado de la tramitación (Decretada, Tramite, Rechazada)',
+                    'Estado de tramitación del AMERB':'Estado de tramitación del AMERB',
+                    'Condición en que se encuentra el estado de un Área de Manejo':'Condición en que se encuentra el estado de un Área de Manejo',
+                    'Superficie AMERB en hectáreas':'Superficie AMERB en hectárease',
+                    'Especies principales del AMERB':'Especies principales del AMERB',
+                    'Nombre de la o las organización (es) de pescadores artesanales vinculado (s)':'Nombre de la o las organización (es) de pescadores artesanales vinculado (s)',
+                    'Número de Registro Pescadores Artesanales':'Número de Registro Pescadores Artesanales',
+                    'Fecha del Registro Pescadores Artesanales':'Fecha del Registro Pescadores Artesanales',
+                    'Número del decreto del Ministerio de Economía que establece el sector como AMERB (Dcto. MINECON)':'Número del decreto del Ministerio de Economía que establece el sector como AMERB (Dcto. MINECON)',
+                    'Período de validez de la destinación del Área de Manejo':'Período de validez de la destinación del Área de Manejo',
+                    'Descripcion':'Descripcion',
+                    'Origen Dato':'Origen del Dato',
+                    'Ultima Actualizacion Dato':'Ultima Actualizacion del Dato'
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#E83A14', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.3 // Transparencia del relleno
+                }
+            },
+            pesca_concesiones: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'Especie', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Concesiones de Acuicultura', // Nombre personalizado de la Capa
+                atributo: 'Especie',
+                colores: {
+                    'Olivo': '#5F1B00',
+                    'Lima': '#91300A',
+                    'Limonero': '#D34F1E',
+                    'Nectarino': '#ECA106',
+                },
+                popupCampos: ['Comuna', 'Especie', 'Variedad','Año plantacion','Nº Arboles','Superficie','Descripcion','Origen del Dato'],
+                alias: {
+                    'Comuna': 'Comuna',
+                    'Especie': 'Especia',
+                    'Variedad': 'Variedad',
+                    'Año plantacion':'Año Plantacion',
+                    'Nº Arboles':'Nº Arboles',
+                    'Superficie':'Superficie',
+                    'Descripcion':'Descripcion',
+                    'Origen del Dato':'Origen del Dato',
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#E83A14', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.3 // Transparencia del relleno
+                }
+            },
+            pesca_planes_manejo: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'Especie', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Planes de Manejo de Recursos Bentonicos', // Nombre personalizado de la Capa
+                atributo: 'Especie',
+                colores: {
+                    'Olivo': '#5F1B00',
+                    'Lima': '#91300A',
+                    'Limonero': '#D34F1E',
+                    'Nectarino': '#ECA106',
+                },
+                popupCampos: ['Comuna', 'Especie', 'Variedad','Año plantacion','Nº Arboles','Superficie','Descripcion','Origen del Dato'],
+                alias: {
+                    'Comuna': 'Comuna',
+                    'Especie': 'Especia',
+                    'Variedad': 'Variedad',
+                    'Año plantacion':'Año Plantacion',
+                    'Nº Arboles':'Nº Arboles',
+                    'Superficie':'Superficie',
+                    'Descripcion':'Descripcion',
+                    'Origen del Dato':'Origen del Dato',
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#E83A14', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.3 // Transparencia del relleno
+                }
+            },
+            pesca_areas_protegidas: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'Especie', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Areas Marinas Protegidas', // Nombre personalizado de la Capa
+                atributo: 'Especie',
+                colores: {
+                    'Olivo': '#5F1B00',
+                    'Lima': '#91300A',
+                    'Limonero': '#D34F1E',
+                    'Nectarino': '#ECA106',
+                },
+                popupCampos: ['Comuna', 'Especie', 'Variedad','Año plantacion','Nº Arboles','Superficie','Descripcion','Origen del Dato'],
+                alias: {
+                    'Comuna': 'Comuna',
+                    'Especie': 'Especia',
+                    'Variedad': 'Variedad',
+                    'Año plantacion':'Año Plantacion',
+                    'Nº Arboles':'Nº Arboles',
+                    'Superficie':'Superficie',
+                    'Descripcion':'Descripcion',
+                    'Origen del Dato':'Origen del Dato',
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#E83A14', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.3 // Transparencia del relleno
+                }
+            },
+        },
+        leyenda: {
+        }
+    },
 };
 
 // Configuración de capas base
@@ -412,6 +893,10 @@ const capasBaseConfig = {
     googleMaps: {
         url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
         nombre: 'Google Maps'
+    },
+    openTopoMap: {
+        url: 'https://a.tile.opentopomap.org/{z}/{x}/{y}.png',
+        nombre: 'OpenTopoMap'
     }
     // Puedes agregar más capas base aquí
 };
