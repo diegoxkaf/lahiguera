@@ -644,7 +644,7 @@ const temasConfig = {
                              'Cantidad de pescadores mujeres',
                              'Cantidad de pescadores hombre',
                              'Propiedad del Terreno',
-                             'Principales Actividades',
+                             'Principales actividades',
                              'Áreas potenciales',
                              'Cantidad de especies capturadas (TM)',
                              'Total Algas (TM)',
@@ -663,7 +663,7 @@ const temasConfig = {
                     'Cantidad de pescadores mujeres': 'Cantidad de pescadoras Mujeres',
                     'Cantidad de pescadores hombre':'Cantidad de pescadores Hombres',
                     'Propiedad del Terreno':'Propiedad del Terreno',
-                    'Principales Actividades':'Principales Actividades',
+                    'Principales actividades':'Principales Actividades',
                     'Áreas potenciales':'Áreas potenciales',
                     'Cantidad de especies capturadas (TM)':'Cantidad de especies capturadas (TM)',
                     'Total Algas (TM)':'Total Algas (TM)',
@@ -742,22 +742,22 @@ const temasConfig = {
                 nombrePersonalizado: 'Areas de Manejo y Explotacion de Productos Bentonicos', // Nombre personalizado de la Capa
                 atributo: 'Condición en que se encuentra el estado de un Área de Manejo',
                 colores: {
-                    'DECRETADO': '#73BBA3',
-                    'PENDIENTE': '#88D66C',
-                    'RECHAZADO': '#F6FB7A',
+                    'DECRETADO': '#363062',
+                    'PENDIENTE': '#4D4C7D',
+                    'RECHAZADO': '#827397',
                 },
                 popupCampos: [
                     'Nombre sector AMERB',
                      'Fecha ingreso de la solicitud AMERB',
-                      'Detalle del estado de la tramitación (Decretada, Tramite, Rechazada)',
+                      'Detalle del estado de la tramitación (Decretada, Tramite,\nRechazada)',
                       'Estado de tramitación del AMERB',
-                      'Condición en que se encuentra el estado de un Área de Manejo',
+                      'Condición en que se encuentra el estado de un Área de\nManejo',
                       'Superficie AMERB en hectáreas',
                       'Especies principales del AMERB',
-                      'Nombre de la o las organización (es) de pescadores artesanales vinculado (s)',
+                      'Nombre de la o las organización (es) de pescadores\nartesanales vinculado (s)',
                     'Número de Registro Pescadores Artesanales',
                     'Fecha del Registro Pescadores Artesanales',
-                    'Número del decreto del Ministerio de Economía que establece el sector como AMERB (Dcto. MINECON)',
+                    'Número del decreto del Ministerio de Economía que establece\nel sector como AMERB (Dcto. MINECON)',
                     'Período de validez de la destinación del Área de Manejo',
                     'Descripcion',
                     'Origen Dato',
@@ -766,15 +766,15 @@ const temasConfig = {
                 alias: {
                     'Nombre sector AMERB': 'Nombre sector AMERB',
                     'Fecha ingreso de la solicitud AMERB': 'Fecha ingreso de la solicitud AMERB',
-                    'Detalle del estado de la tramitación (Decretada, Tramite, Rechazada)': 'Detalle del estado de la tramitación (Decretada, Tramite, Rechazada)',
+                    'Detalle del estado de la tramitación (Decretada, Tramite,\nRechazada)': 'Detalle del estado de la tramitación (Decretada, Tramite, Rechazada)',
                     'Estado de tramitación del AMERB':'Estado de tramitación del AMERB',
-                    'Condición en que se encuentra el estado de un Área de Manejo':'Condición en que se encuentra el estado de un Área de Manejo',
+                    'Condición en que se encuentra el estado de un Área de\nManejo':'Condición en que se encuentra el estado de un Área de Manejo',
                     'Superficie AMERB en hectáreas':'Superficie AMERB en hectárease',
                     'Especies principales del AMERB':'Especies principales del AMERB',
-                    'Nombre de la o las organización (es) de pescadores artesanales vinculado (s)':'Nombre de la o las organización (es) de pescadores artesanales vinculado (s)',
+                    'Nombre de la o las organización (es) de pescadores\nartesanales vinculado (s)':'Nombre de la o las organización (es) de pescadores artesanales vinculado (s)',
                     'Número de Registro Pescadores Artesanales':'Número de Registro Pescadores Artesanales',
                     'Fecha del Registro Pescadores Artesanales':'Fecha del Registro Pescadores Artesanales',
-                    'Número del decreto del Ministerio de Economía que establece el sector como AMERB (Dcto. MINECON)':'Número del decreto del Ministerio de Economía que establece el sector como AMERB (Dcto. MINECON)',
+                    'Número del decreto del Ministerio de Economía que establece\nel sector como AMERB (Dcto. MINECON)':'Número del decreto del Ministerio de Economía que establece el sector como AMERB (Dcto. MINECON)',
                     'Período de validez de la destinación del Área de Manejo':'Período de validez de la destinación del Área de Manejo',
                     'Descripcion':'Descripcion',
                     'Origen Dato':'Origen del Dato',
@@ -782,104 +782,358 @@ const temasConfig = {
                 },
                 // Personalizar el color del borde y la transparencia
                 estiloBase: {
-                    color: '#E83A14', // Color del borde
+                    color: '#73BBA3', // Color del borde
                     weight: 1, // Grosor del borde
                     // Opacity: sirve para darle transparencia a las lineas
-                    fillOpacity: 0.3 // Transparencia del relleno
+                    fillOpacity: 0.5 // Transparencia del relleno
                 }
             },
             pesca_concesiones: {
                 type: 'polygon', // Tipo de capa: point, line, polygon
-                atributo: 'Especie', // Asegúrate de que este atributo exista en tu GeoJSON
+                atributo: 'Grupo de especies de cultivo', // Asegúrate de que este atributo exista en tu GeoJSON
                 nombrePersonalizado: 'Concesiones de Acuicultura', // Nombre personalizado de la Capa
-                atributo: 'Especie',
+                atributo: 'Grupo de especies de cultivo',
                 colores: {
-                    'Olivo': '#5F1B00',
-                    'Lima': '#91300A',
-                    'Limonero': '#D34F1E',
-                    'Nectarino': '#ECA106',
+                    'PECES': '#618264',
+                    'MOLUSCOS': '#79AC78',
+                    'SALMONES': '#B0D9B1',
+                    'ALGAS': '#D0E7D2',
                 },
-                popupCampos: ['Comuna', 'Especie', 'Variedad','Año plantacion','Nº Arboles','Superficie','Descripcion','Origen del Dato'],
+                popupCampos: [
+                    'Nombre de Titular',
+                    'Número Pert, código de la solicitud de ingreso a trámite.',
+                    'Código de Centro de Cultivo de acuerdo al Registro Nacional\nde Acuicultura (RNA)',
+                    'Nombre de la(s) especie(s) de cultivo.',
+                    'Estado de trámite de la concesión y solicitud de acuicultura',
+                    'Grupo de especies de cultivo',
+                    'Superficie (Há)',
+                    'Descripcion',
+                    'Origen Data',
+                    'Ultima Actualizacion Dato'
+                    ],
                 alias: {
-                    'Comuna': 'Comuna',
-                    'Especie': 'Especia',
-                    'Variedad': 'Variedad',
-                    'Año plantacion':'Año Plantacion',
-                    'Nº Arboles':'Nº Arboles',
-                    'Superficie':'Superficie',
+                    'Nombre de Titular': 'Nombre de Titular',
+                    'Número Pert, código de la solicitud de ingreso a trámite.': 'Número Pert, código de la solicitud de ingreso a trámite.',
+                    'Código de Centro de Cultivo de acuerdo al Registro Nacional\nde Acuicultura (RNA)': 'Código de Centro de Cultivo de acuerdo al Registro Nacional de Acuicultura (RNA)',
+                    'Nombre de la(s) especie(s) de cultivo.':'Nombre de la(s) especie(s) de cultivo.',
+                    'Estado de trámite de la concesión y solicitud de acuicultura':'Estado de trámite de la concesión y solicitud de acuicultura',
+                    'Grupo de especies de cultivo':'Grupo de especies de cultivo',
+                    'Superficie (Há)':'Superficie en ha',
                     'Descripcion':'Descripcion',
-                    'Origen del Dato':'Origen del Dato',
+                    'Origen Data':'Origen de la Data',
+                    'Ultima Actualizacion Dato':'Ultima Actualizacion del Dato'
                 },
                 // Personalizar el color del borde y la transparencia
                 estiloBase: {
-                    color: '#E83A14', // Color del borde
+                    color: '#618264', // Color del borde
                     weight: 1, // Grosor del borde
                     // Opacity: sirve para darle transparencia a las lineas
-                    fillOpacity: 0.3 // Transparencia del relleno
+                    fillOpacity: 0.6 // Transparencia del relleno
                 }
             },
             pesca_planes_manejo: {
                 type: 'polygon', // Tipo de capa: point, line, polygon
-                atributo: 'Especie', // Asegúrate de que este atributo exista en tu GeoJSON
+                atributo: 'Nombre de la región', // Asegúrate de que este atributo exista en tu GeoJSON
                 nombrePersonalizado: 'Planes de Manejo de Recursos Bentonicos', // Nombre personalizado de la Capa
-                atributo: 'Especie',
+                atributo: 'Nombre de la región',
                 colores: {
-                    'Olivo': '#5F1B00',
-                    'Lima': '#91300A',
-                    'Limonero': '#D34F1E',
-                    'Nectarino': '#ECA106',
+                    'REGION DE COQUIMBO': '#0B409C',
                 },
-                popupCampos: ['Comuna', 'Especie', 'Variedad','Año plantacion','Nº Arboles','Superficie','Descripcion','Origen del Dato'],
+                popupCampos: [
+                    'Número identificador',
+                    'Nombre correspondiente al Plan de Manejo Bentónico',
+                    'Nombre de las comunas correspondientes el Plan de manejo\nBentónico',
+                    'Numero de resolución pesquera que establece al Plan de\nManejo, corresponde a informes técnicos del Plan de Manejo\npara obtener el decreto o resolución exenta',
+                    'Fecha de promulgación de la resolución pesquera que\nestablece al plan de manejo pesquera',
+                    'Fecha de promulgación de la resolución pesquera que\naprueba el Plan de Manejo.',
+                    'Área referencial en hectáreas',
+                    'Especie(s) principal(es) que identifican el Plan de Manejo\nBentónico',
+                    'Régimen de extracción del Plan de Manejo determinado por el\nartículo 9° Bis de Ley General de Pesca y Acuicultura',
+                    'Descripcion',
+                    'Origen Data',
+                    'Ultima Actualizacion Data'
+                    ],
                 alias: {
-                    'Comuna': 'Comuna',
-                    'Especie': 'Especia',
-                    'Variedad': 'Variedad',
-                    'Año plantacion':'Año Plantacion',
-                    'Nº Arboles':'Nº Arboles',
-                    'Superficie':'Superficie',
+                    'Número identificador': 'Número identificador',
+                    'Nombre correspondiente al Plan de Manejo Bentónico': 'Nombre correspondiente al Plan de Manejo Bentónico',
+                    'Nombre de las comunas correspondientes el Plan de manejo\nBentónico': 'Nombre de las comunas correspondientes el Plan de manejo Bentónico',
+                    'Numero de resolución pesquera que establece al Plan de\nManejo, corresponde a informes técnicos del Plan de Manejo\npara obtener el decreto o resolución exenta':'Numero de resolución pesquera que establece al Plan de Manejo, corresponde a informes técnicos del Plan de Manejo para obtener el decreto o resolución exenta',
+                    'Fecha de promulgación de la resolución pesquera que\nestablece al plan de manejo pesquera':'Fecha de promulgación de la resolución pesquera que establece al plan de manejo pesquera',
+                    'Fecha de promulgación de la resolución pesquera que\naprueba el Plan de Manejo.':'Fecha de promulgación de la resolución pesquera que aprueba el Plan de Manejo.',
+                    'Área referencial en hectáreas':'Área referencial en hectáreas',
+                    'Especie(s) principal(es) que identifican el Plan de Manejo\nBentónico':'Especie(s) principal(es) que identifican el Plan de Manejo Bentónico',
+                    'Régimen de extracción del Plan de Manejo determinado por el\nartículo 9° Bis de Ley General de Pesca y Acuicultura':'Régimen de extracción del Plan de Manejo determinado por el artículo 9° Bis de Ley General de Pesca y Acuicultura',
                     'Descripcion':'Descripcion',
-                    'Origen del Dato':'Origen del Dato',
+                    'Origen Data':'Origen de la Data',
+                    'Ultima Actualizacion Data':'Ultima Actualizacion de la Data'
                 },
                 // Personalizar el color del borde y la transparencia
                 estiloBase: {
-                    color: '#E83A14', // Color del borde
+                    color: '#815B5B', // Color del borde
                     weight: 1, // Grosor del borde
                     // Opacity: sirve para darle transparencia a las lineas
-                    fillOpacity: 0.3 // Transparencia del relleno
+                    fillOpacity: 0.5 // Transparencia del relleno
                 }
             },
             pesca_areas_protegidas: {
                 type: 'polygon', // Tipo de capa: point, line, polygon
-                atributo: 'Especie', // Asegúrate de que este atributo exista en tu GeoJSON
-                nombrePersonalizado: 'Areas Marinas Protegidas', // Nombre personalizado de la Capa
-                atributo: 'Especie',
+                atributo: 'Nombre del Área Marina Protegida', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Áreas Marinas Protegidas', // Nombre personalizado de la Capa
+                atributo: 'Nombre del Área Marina Protegida',
                 colores: {
-                    'Olivo': '#5F1B00',
-                    'Lima': '#91300A',
-                    'Limonero': '#D34F1E',
-                    'Nectarino': '#ECA106',
+                    'ARCHIPIELAGO DE HUMBOLDT': '#F6FB7A',
+                    'ISLA CHAÑARAL': '#ED7B7B',
+                    'ISLAS CHOROS DAMAS': '#F0B86E',
                 },
-                popupCampos: ['Comuna', 'Especie', 'Variedad','Año plantacion','Nº Arboles','Superficie','Descripcion','Origen del Dato'],
+                popupCampos: [
+                    'Nombre del Área Marina Protegida',
+                    'Numero de decreto que la establece',
+                    'Fecha de decreto que la establece',
+                    'Creador del Área Marina Protegida',
+                    'Superficie (Ha)',
+                    'Descripcion',
+                    'Origen Dato',
+                    'Ultima Actualizacion Dato'
+                ],
                 alias: {
-                    'Comuna': 'Comuna',
-                    'Especie': 'Especia',
-                    'Variedad': 'Variedad',
-                    'Año plantacion':'Año Plantacion',
-                    'Nº Arboles':'Nº Arboles',
-                    'Superficie':'Superficie',
+                    'Nombre del Área Marina Protegida': 'Nombre del Área Marina Protegida',
+                    'Numero de decreto que la establece': 'Numero de decreto que la establece',
+                    'Fecha de decreto que la establece': 'Fecha de decreto que la establece',
+                    'Creador del Área Marina Protegida':'Creador del Área Marina Protegida',
+                    'Superficie (Ha)':'Superficie (Ha)',
                     'Descripcion':'Descripcion',
-                    'Origen del Dato':'Origen del Dato',
+                    'Origen Dato':'Origen del Dato',
+                    'Ultima Actualizacion Dato':'Ultima Actualizacion del Dato',
                 },
                 // Personalizar el color del borde y la transparencia
                 estiloBase: {
-                    color: '#E83A14', // Color del borde
+                    color: '#FFCD4B', // Color del borde
                     weight: 1, // Grosor del borde
                     // Opacity: sirve para darle transparencia a las lineas
-                    fillOpacity: 0.3 // Transparencia del relleno
+                    fillOpacity: 0.5 // Transparencia del relleno
                 }
             },
         },
         leyenda: {
+        }
+    },
+    riesgo: {
+        capas: ['riesgo_puntos_criticos', 'riesgo_remocion_masa', 'riesgo_punto_encuentro','riesgo_cota30mt', 'riesgo_linea_segura', 'riesgo_via_evacuacion','riesgo_area_evacuar'],
+        estilo: {
+            riesgo_puntos_criticos: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'COMUNA', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Puntos Criticos Invierno 2024', // Nombre personalizado de la Capa
+                iconos: {
+                    'LA HIGUERA': 'puntos_criticos.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'SECTOR',
+                    'CAUSA_PUNT',
+                    'ACCIONES_D',
+                    'SI_LA_RESP',
+                    'NIVEL_DE_R',
+                    'Descripcion',
+                    'Origen Dato',
+                    ],
+                alias: {
+                    'SECTOR': 'Sector',
+                    'CAUSA_PUNT': 'Causa del Evento',
+                    'ACCIONES_D':'Acciones',
+                    'SI_LA_RESP': 'Responsable',
+                    'NIVEL_DE_R':'Nivel de Riesgo',
+                    'Descripcion':'Descripcion',
+                    'Origen Dato':'Origen de la Informacion'
+                }
+            },
+            riesgo_remocion_masa: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'Tipo de remoción', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Remocion en Masa', // Nombre personalizado de la Capa
+                iconos: {
+                    'Flujo': 'derrumbes.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'Codigo',
+                    'Tipo de remoción',
+                    'Tipo de material',
+                    'Clasificación',
+                    'Detonante',
+                    'Día del evento',
+                    'Mes de inicio',
+                    'Año del evento',
+                    'Estación',
+                    'Enlace del informe',
+                    'Autor del informe',
+                    'Fuente de información',
+                    'Descripcion',
+                    'Origen Dato'
+                    ],
+                alias: {
+                    'Codigo': 'Codigo',
+                    'Tipo de remoción': 'Tipo de remoción',
+                    'Tipo de material':'Tipo de material',
+                    'Clasificación': 'Clasificación',
+                    'Detonante':'Detonante',
+                    'Día del evento':'Día del evento',
+                    'Mes de inicio':'Mes de inicio',
+                    'Año del evento':'Año del evento',
+                    'Estación':'Estación',
+                    'Enlace del informe':'Enlace del informe',
+                    'Autor del informe':'Autor del informe',
+                    'Fuente de información':'Fuente de información',
+                    'Descripcion':'Descripcion',
+                    'Origen Dato':'Origen del Dato'
+                }
+            },
+            riesgo_punto_encuentro: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'nom_com', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Puntos de Encuentro', // Nombre personalizado de la Capa
+                iconos: {
+                    'La Higuera': 'punto_encuentro.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'name',
+                    'sector',
+                    'Descripcion',
+                    'Recomendaciones SENAPRED',
+                    'Origen Data'
+                    ],
+                alias: {
+                    'name': 'Nombre del Punto',
+                    'sector': 'Sector',
+                    'Descripcion':'Descripcion',
+                    'Recomendaciones SENAPRED': 'Recomendaciones SENAPRED',
+                    'Origen Data':'Origen de la Informacion'
+                }
+            },
+            riesgo_cota30mt: {
+                type: 'line',
+                nombrePersonalizado: 'Cota 30 Mts.',
+                atributo: 'Descripcion', // Asegúrate de que este atributo exista en tu GeoJSON
+                colores: {
+                    'Cota 30 mts. Amenaza por Tsunami': '#ff1e00'
+                },// Configuracion del Estilo Base de la Linea (Ancho, transparencia, Segmentacion de la Linea)
+                estiloBase: {
+                    weight: 4,
+                    opacity: 0.8,
+                    dashArray: '1'
+                },
+                popupCampos: ['Descripcion', 'Recomendaciones SENAPRED', 'Origen Data'],
+                alias: {
+                    'Descripcion': 'Descripcion',
+                    'Recomendaciones SENAPRED': 'Recomendaciones SENAPRED',
+                    'Origen Data': 'Origen de la Data'
+                }
+            },
+            riesgo_linea_segura: {
+                type: 'line',
+                nombrePersonalizado: 'Linea Segura',
+                atributo: 'tipo', // Asegúrate de que este atributo exista en tu GeoJSON
+                colores: {
+                    'Límite de área de evacuación': '#ff1e00'
+                },// Configuracion del Estilo Base de la Linea (Ancho, transparencia, Segmentacion de la Linea)
+                estiloBase: {
+                    weight: 4,
+                    opacity: 0.8,
+                    dashArray: '1'
+                },
+                popupCampos: ['Descripcion', 'Recomendaciones SENAPRED', 'Origen Data'],
+                alias: {
+                    'Descripcion': 'Descripcion',
+                    'Recomendaciones SENAPRED': 'Recomendaciones SENAPRED',
+                    'Origen Data': 'Origen de la Data'
+                }
+            },
+            riesgo_via_evacuacion: {
+                type: 'line',
+                nombrePersonalizado: 'Via de Evacuacion',
+                atributo: 'nom_com', // Asegúrate de que este atributo exista en tu GeoJSON
+                colores: {
+                    'La Higuera': '#3953ff'
+                },// Configuracion del Estilo Base de la Linea (Ancho, transparencia, Segmentacion de la Linea)
+                estiloBase: {
+                    weight: 4,
+                    opacity: 0.8,
+                    dashArray: '1'
+                },
+                popupCampos: ['name', 'sector','Descripcion','Recomendaciones SENAPRED', 'Origen Data'],
+                alias: {
+                    'name':'Codigo de la Via de Evacuacion',
+                    'sector':'Sector',
+                    'Descripcion': 'Descripcion',
+                    'Recomendaciones SENAPRED': 'Recomendaciones SENAPRED',
+                    'Origen Data': 'Origen de la Data'
+                }
+            },
+            riesgo_area_evacuar: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'Descripcion', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Area a Evacuar', // Nombre personalizado de la Capa
+                atributo: 'Descripcion',
+                colores: {
+                    'Area de Evacuacion por Amenaza de Tsunami': '#ff557f'
+                },
+                popupCampos: ['sector', 'Descripcion', 'Recomendaciones SENAPRED','Origen Data'],
+                alias: {
+                    'sector': 'Sector',
+                    'Descripcion': 'Region',
+                    'Recomendaciones SENAPRED':'Recomendaciones de SENAPRED',
+                    'Origen Data':'Origen de la Informacion'
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#ff557f', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.5 // Transparencia del relleno
+                }
+            }
+        },
+        leyenda: {
+            Energia_linea_de_transmision: {
+                titulo: 'Lineas de Transmisión',
+                items: [
+                    {color: '#FF6B6B', label: '500 Kv'},
+                    {color: '#4ECDC4', label: '220 Kv'},
+                    {color: '#2A9D8F', label: '110 Kv'},
+                    {color: '#E9C46A', label: '23 Kv'}
+                ]
+            },
+            limite_comunal: {
+                titulo: 'Comuna de La Higuera',
+                items: [
+                    {color: '#FF6B6B', label: 'La Higuera'}
+                ]
+            },
+            Energia_Potencial_Fotovoltaico: {
+                titulo: 'Potencial Energético',
+                items: [
+                    {color: '#E83A14', label: 'Potencial Energético'}
+                ]
+            },
         }
     },
 };
