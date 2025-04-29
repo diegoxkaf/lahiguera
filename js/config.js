@@ -255,7 +255,7 @@ const temasConfig = {
         }
     },
     energia: {
-        capas: ['Energia_linea_de_transmision', 'Energia_Plantas_eolicas', 'Energia_Potencial_Fotovoltaico','Energia_Solares', 'Energia_Subestaciones', 'Energia_Termoelectricas','limite_comunal_linea'],
+        capas: ['Energia_linea_de_transmision', 'Energia_Plantas_eolicas', 'Energia_Potencial_Fotovoltaico','Energia_Solares', 'Energia_Subestaciones', 'Energia_Termoelectricas','limite_comunal_linea','toponimia'],
         estilo: {
             Energia_linea_de_transmision: {
                 type: 'line',
@@ -447,7 +447,7 @@ const temasConfig = {
         }
     },
     telecomunicaciones: {
-        capas: ['Telecomunicaciones_antenas_4G', 'Telecomunicaciones_antenas_5G','limite_comunal_linea'],
+        capas: ['Telecomunicaciones_antenas_4G', 'Telecomunicaciones_antenas_5G','limite_comunal_linea','toponimia'],
         estilo: {
             Telecomunicaciones_antenas_5G: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -503,7 +503,7 @@ const temasConfig = {
         },
     },
     agricultura: {
-        capas: ['Agro_Derechos_Agua', 'Agro_apr', 'Agro_plantaciones_frutales','Agro_catastro_fruticola','hidrografia','limite_comunal_linea'],
+        capas: ['Agro_Derechos_Agua', 'Agro_apr', 'Agro_plantaciones_frutales','Agro_catastro_fruticola','hidrografia','limite_comunal_linea','toponimia'],
         estilo: {
             Agro_Derechos_Agua: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -651,7 +651,7 @@ const temasConfig = {
         }
     },
     turismo: {
-        capas: ['turismo_atractivos_turisticos', 'turismo_rutas','turismo_bienes_nacionales_protegidos', 'turismo_infraestructura', 'turismo_snaspe','turismo_monumentos_nacionales','limite_comunal_linea'],
+        capas: ['turismo_atractivos_turisticos', 'turismo_rutas','turismo_bienes_nacionales_protegidos', 'turismo_infraestructura', 'turismo_snaspe','turismo_monumentos_nacionales','limite_comunal_linea','toponimia'],
         estilo: {
             turismo_bienes_nacionales_protegidos: {
                 type: 'polygon', // Tipo de capa: point, line, polygon
@@ -905,7 +905,7 @@ const temasConfig = {
         }
     },
     pesca: {
-        capas: ['pesca_caletas', 'pesca_infraestructura_doh', 'pesca_aaa','pesca_amerb','pesca_concesiones','pesca_planes_manejo','pesca_areas_protegidas','limite_comunal_linea'],
+        capas: ['pesca_caletas', 'pesca_infraestructura_doh', 'pesca_aaa','pesca_amerb','pesca_concesiones','pesca_planes_manejo','pesca_areas_protegidas','limite_comunal_linea','toponimia'],
         estilo: {
             pesca_caletas: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -1201,7 +1201,7 @@ const temasConfig = {
         }
     },
     riesgo: {
-        capas: ['riesgo_puntos_criticos', 'riesgo_remocion_masa', 'riesgo_punto_encuentro','riesgo_cota30mt', 'riesgo_linea_segura', 'riesgo_via_evacuacion','riesgo_area_evacuar','limite_comunal_linea'],
+        capas: ['riesgo_puntos_criticos', 'riesgo_remocion_masa', 'riesgo_punto_encuentro','riesgo_cota30mt', 'riesgo_linea_segura', 'riesgo_via_evacuacion','riesgo_area_evacuar','limite_comunal_linea','toponimia'],
         estilo: {
             riesgo_puntos_criticos: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -1420,7 +1420,7 @@ const temasConfig = {
         }
     },
     infraestructura: {
-        capas: ['infraestructura_municipio', 'infraestructura_parvulos', 'infraestructura_salud','infraestructura_colegios', 'infraestructura_carabineros', 'infraestructura_deportes','infraestructura_compañias', 'infraestructura_bibliotecas','infraestructura_cuerpos_bomberos','limite_comunal_linea'],
+        capas: ['infraestructura_municipio', 'infraestructura_parvulos', 'infraestructura_salud','infraestructura_colegios', 'infraestructura_carabineros', 'infraestructura_deportes','infraestructura_compañias', 'infraestructura_bibliotecas','infraestructura_cuerpos_bomberos','limite_comunal_linea','toponimia'],
         estilo: {
             infraestructura_municipio: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -1737,7 +1737,7 @@ const temasConfig = {
         }
     },
     planificacion: {
-        capas: ['ipt_prc', 'ipt_prc_inundables', 'ipt_ZUBC','ipt_pri_elqui','limite_comunal_linea'],
+        capas: ['ipt_prc', 'ipt_prc_inundables', 'ipt_ZUBC','ipt_pri_elqui','limite_comunal_linea','toponimia'],
         estilo: {
             ipt_ZUBC: {
                 type: 'polygon', // Tipo de capa: point, line, polygon
@@ -1903,7 +1903,7 @@ const temasConfig = {
         }
     },
     inversiones: {
-        capas: ['inversiones_SEIA', 'inversiones_bip','inversiones_geo_cgr','limite_comunal_linea'],
+        capas: ['inversiones_SEIA', 'inversiones_bip','inversiones_geo_cgr','limite_comunal_linea','toponimia'],
         estilo: {
             inversiones_SEIA: {
                 type: 'point', // Tipo de capa: point, line, polygon
