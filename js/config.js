@@ -1,7 +1,7 @@
 // Configuración de temas y estilos
 const temasConfig = {
     mineria: {
-        capas: ['relaves_mineros', 'Mineria_Instalaciones_Mineras','Mineria_Yacimientos','Mineria_Propiedad_Minera','limite_comunal'],
+        capas: ['relaves_mineros', 'Mineria_Instalaciones_Mineras','Mineria_Yacimientos','Mineria_Propiedad_Minera','limite_comunal_linea','toponimia'],
         estilo: {
             relaves_mineros: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -185,12 +185,12 @@ const temasConfig = {
                     fillOpacity: 0.3 // Transparencia del relleno
                 }
             },
-            limite_comunal: {
-                type: 'polygon',
+            limite_comunal_linea: {
+                type: 'line',
                 nombrePersonalizado: 'Limite Comunal',
                 atributo: 'NOM_COMUNA',
                 colores: {
-                    'La Higuera': '#FF6B6B'
+                    'La Higuera': '#333644'
                 },
                 popupCampos: ['NOM_COMUNA', 'NOM_PROVIN', 'NOM_REGION'],
                 alias: {
@@ -205,7 +205,37 @@ const temasConfig = {
                     // Opacity: sirve para darle transparencia a las lineas
                     fillOpacity: 0 // Transparencia del relleno
                 }
-            }
+            },
+            toponimia: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'Tipo', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Toponimia', // Nombre personalizado de la Capa
+                iconos: {
+                    'Localidad': 'localidad.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: ['Nombre' ],
+                alias: {
+                    'Nombre': 'Nombre',
+                },
+                etiquetas: {
+                    campo: 'Nombre',
+                    estilo: {
+                        color: '#000000', // Color del texto
+                        fontSize: '9px', // Tamaño de la fuente
+                        fontFamily: 'Arial, sans-serif', // Familia de la fuente
+                        bufferColor: '#88304E', // Color del contorno
+                        bufferWidth: 0.3, // Ancho del contorno
+                        offsetY: 100 // Añadida propiedad para el offset vertical
+                    }
+                }
+            },
         },
         leyenda: {
             relaves_mineros: {
@@ -225,7 +255,7 @@ const temasConfig = {
         }
     },
     energia: {
-        capas: ['Energia_linea_de_transmision', 'Energia_Plantas_eolicas', 'Energia_Potencial_Fotovoltaico','Energia_Solares', 'Energia_Subestaciones', 'Energia_Termoelectricas'],
+        capas: ['Energia_linea_de_transmision', 'Energia_Plantas_eolicas', 'Energia_Potencial_Fotovoltaico','Energia_Solares', 'Energia_Subestaciones', 'Energia_Termoelectricas','limite_comunal_linea'],
         estilo: {
             Energia_linea_de_transmision: {
                 type: 'line',
@@ -252,12 +282,11 @@ const temasConfig = {
                 etiquetas: {
                     campo: 'NOMBRE',
                     estilo: {
-                        color: '#000000',
-                        fontSize: '8px',
-                        fontFamily: 'Arial, sans-serif',
-                        backgroundColor: 'rgba(255, 255, 255, 0.3)',
-                        padding: '1px',
-                        borderRadius: '10px'
+                        color: '#000000', // Color del texto
+                        fontSize: '9px', // Tamaño de la fuente
+                        fontFamily: 'Arial, sans-serif', // Familia de la fuente
+                        bufferColor: '#0118D8', // Color del contorno
+                        bufferWidth: 0.3 // Ancho del contorno
                     }
                 }
             },
@@ -418,7 +447,7 @@ const temasConfig = {
         }
     },
     telecomunicaciones: {
-        capas: ['Telecomunicaciones_antenas_4G', 'Telecomunicaciones_antenas_5G'],
+        capas: ['Telecomunicaciones_antenas_4G', 'Telecomunicaciones_antenas_5G','limite_comunal_linea'],
         estilo: {
             Telecomunicaciones_antenas_5G: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -474,7 +503,7 @@ const temasConfig = {
         },
     },
     agricultura: {
-        capas: ['Agro_Derechos_Agua', 'Agro_apr', 'Agro_plantaciones_frutales','Agro_catastro_fruticola','hidrografia'],
+        capas: ['Agro_Derechos_Agua', 'Agro_apr', 'Agro_plantaciones_frutales','Agro_catastro_fruticola','hidrografia','limite_comunal_linea'],
         estilo: {
             Agro_Derechos_Agua: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -621,8 +650,262 @@ const temasConfig = {
         leyenda: {
         }
     },
+    turismo: {
+        capas: ['turismo_atractivos_turisticos', 'turismo_rutas','turismo_bienes_nacionales_protegidos', 'turismo_infraestructura', 'turismo_snaspe','turismo_monumentos_nacionales','limite_comunal_linea'],
+        estilo: {
+            turismo_bienes_nacionales_protegidos: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'BNP', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Bienes Nacionales Protegidos', // Nombre personalizado de la Capa
+                atributo: 'BNP',
+                colores: {
+                    'ISLA GAVIOTA': '#85193C'
+                },
+                popupCampos: ['BNP', 'REGION', 'DECRETO','SUPERFICIE','ADMINISTRA','Descripcion','Origen Dato'],
+                alias: {
+                    'BNP': 'Nombre',
+                    'REGION': 'Region',
+                    'DECRETO':'Decreto',
+                    'SUPERFICIE':'Superficie en hectáreas',
+                    'ADMINISTRA':'Administracion del Bien',
+                    'Descripcion':'Descripción',
+                    'Origen Dato':'Origen del Dato'
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#85193C', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.5 // Transparencia del relleno
+                }
+            },
+            turismo_snaspe: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'CATEGORIA', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Sistema Nacional de Áreas Protegidas', // Nombre personalizado de la Capa
+                colores: {
+                    'Reserva Nacional': '#4A102A'
+                },
+                popupCampos: ['NOMBRE_TOT', 'CATEGORIA', 'NOMBRE_UNI','REGION', 'CONDICION','DECRETO_VI','TIPO_DE_PR','Descripcion','Origen Dato'],
+                alias: {
+                    'NOMBRE_TOT': 'Nombre',
+                    'CATEGORIA': 'Categoría',
+                    'REGION':'Región',
+                    'CONDICION':'Condición',
+                    'DECRETO_VI':'Decreto Vigente',
+                    'TIPO_DE_PR':'Tipo de Propiedad',
+                    'Descripcion':'Descripción',
+                    'Origen Dato':'Origen de la Información',
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#4A102A', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.5 // Transparencia del relleno
+                }
+            },
+            turismo_monumentos_nacionales: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'categoria', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Monumentos Nacionales', // Nombre personalizado de la Capa
+                colores: {
+                    'Santuario de la Naturaleza': '#7C4585'
+                },
+                popupCampos: ['nombre', 'comuna','provincia','categoria', 'codigo','SUPERFIC_1','tipo_decre','num_dec','fch_dec','Descripcion','Origen Data'],
+                alias: {
+                    'nombre': 'Nombre',
+                    'comuna': 'Comuna',
+                    'provincia':'Provincia',
+                    'categoria':'Categoría',
+                    'codigo':'Código del Monumento',
+                    'SUPERFIC_1':'Superficie en Hectáreas',
+                    'tipo_decre':'Tipo de Decreto',
+                    'num_dec':'Número del Decreto',
+                    'fch_dec':'Fecha del Decreto',
+                    'Descripcion':'Descripción',
+                    'Origen Data':'Origen de la Información',
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#7C4585', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.5 // Transparencia del relleno
+                }
+            },
+            turismo_rutas: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'Nombre Ruta', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Rutas Turísticas', // Nombre personalizado de la Capa
+                iconos: {
+                    'Huellas de Humboldt': 'tour1.png',
+                    'Humboldt Aventura': 'tour2.png',
+                    'Sabores de Humboldt': 'tour3.png',
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'Nombre Ruta',
+                    'Descripcion',
+                    'Lugar',
+                    'Tour Operador',
+                    'Origen Data',
+                    ],
+                alias: {
+                    'Nombre Ruta': 'Nombre Ruta',
+                    'Descripcion': 'Descripcion',
+                    'Lugar':'Lugar',
+                    'Tour Operador': 'Tour Operador',
+                    'Origen Data':'Origen Data',
+                }
+            },
+            turismo_infraestructura: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'Tipo', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Infraestructura Turística', // Nombre personalizado de la Capa
+                iconos: {
+                    'Apart Hotel': 'Aparthotel.png',
+                    'Artesanía tradicional y/o contemporánea': 'Artesania.png',
+                    'Buceo recreativo autónomo': 'buceo.png',
+                    'Cabañas': 'Cabañas.png',
+                    'Camping o recinto de campamento': 'Camping.png',
+                    'Canotaje': 'canotaje.png',
+                    'Centro de turismo de naturaleza o lodge': 'Lodge.png',
+                    'Comida rápida': 'Comidarapida.png',
+                    'Departamentos turísticos y/o ejecutivos': 'Departamentos.png',
+                    'Especializado en turismo aventura': 'Taventura.png',
+                    'General': 'OtrosTurismo.png',
+                    'Hostal': 'Hostal.png',
+                    'Hotel': 'Hotel.png',
+                    'Local': 'OtrosTurismo.png',
+                    'Manualidades': 'manualidades.png',
+                    'Observación de flora y fauna': 'observacion2.png',
+                    'Paseos náuticos': 'botes.png',
+                    'Paseos náuticos - Observación de flora y fauna': 'observacion.png',
+                    'Picada': 'Picada.png',
+                    'Productos agroelaborados': 'agroelaborados.png',
+                    'Receptivo': 'OtrosTurismo.png',
+                    'Receptivo y emisivo': 'OtrosTurismo.png',
+                    'Restaurante': 'Restaurante.png',
+                    'Souvenirs': 'souvenirs.png',
+                    'Transporte marítimo': 'nautico.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'Nombre',
+                    'Localidad',
+                    'Direccion',
+                    'Telefono',
+                    'Email',
+                    'Sitio Web',
+                    'Tipo',
+                    'Servicio Cumple Inspeccion',
+                    'Servicio Cumple Patente',
+                    'Link Sernatur',
+                    'Origen Dato',
+                    'Descripcion',
+                    'Ultima Actualizacion del Dato'
+                    ],
+                alias: {
+                    'Nombre': 'Nombre',
+                    'Localidad': 'Localidad',
+                    'Direccion':'Direccion',
+                    'Telefono': 'Telefono',
+                    'Email':'Email',
+                    'Sitio Web':'Sitio Web',
+                    'Tipo':'Tipo',
+                    'Servicio Cumple Inspeccion':'¿Cumple Inspeccion?',
+                    'Servicio Cumple Patente':'¿Cumple Patente?',
+                    'Link Sernatur':'Link Sernatur',
+                    'Descripcion':'Nota',
+                    'Origen Dato':'Origen de la Información',
+                    'Ultima Actualizacion del Dato':'Ultima Actualización del Dato'
+                }
+            },
+            turismo_atractivos_turisticos: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'SUBTIPO', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Atractivos Turísticos', // Nombre personalizado de la Capa
+                iconos: {
+                    'ÁREA MARINA PROTEGIDA (AMP)': 'areamarina.png',
+                    'ÁREA SILVESTRE PROTEGIDA DEL ESTADO (ASPE)': 'areasilvestre.png',
+                    'BAHÍA O CALETA': 'bahia.png',
+                    'CERRO': 'cerro.png',
+                    'CIUDAD': 'ciudad.png',
+                    'FIESTA RELIGIOSA': 'fiesta_religiosa.png',
+                    'ISLA O ARCHIPIÉLAGO': 'isla.png',
+                    'OBSERVATORIO ASTRONÓMICO': 'Observatorio.png',
+                    'PENÍNSULA, CABO O PUNTA': 'peninsula.png',
+                    'PLAYA O BALNEARIO': 'playa.png',
+                    'PUEBLO O ALDEA TRADICIONAL': 'pueblo.png',
+                    'VALLE Y QUEBRADA': 'valle.png',
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'NOMBRE',
+                    'DESCRIPCIO',
+                    'CATEGORIA',
+                    'JERARQUIA',
+                    'TIPO',
+                    'SUBTIPO',
+                    'LOCALIDAD',
+                    'ADMINISTRA',
+                    'ESTACIONAL',
+                    'USO_TUR',
+                    'DEMANDA',
+                    'SERVICIOS',
+                    'ESTADO',
+                    'Descripcion',
+                    'Origen Data'
+                    ],
+                alias: {
+                    'NOMBRE':'Nombre',
+                    'DESCRIPCIO':'Descripcion',
+                    'CATEGORIA':'Categoria',
+                    'JERARQUIA':'Jerarquia',
+                    'TIPO':'Tipo',
+                    'SUBTIPO':'Subtipo',
+                    'LOCALIDAD':'Localidad',
+                    'ADMINISTRA':'Administracion',
+                    'ESTACIONAL':'Estacionalidad',
+                    'USO_TUR':'Uso Turistico',
+                    'DEMANDA':'Demanda',
+                    'SERVICIOS':'Servicios',
+                    'ESTADO':'Estado',
+                    'Descripcion':'Sobre el Catastro',
+                    'Origen Data':'Origen de la Data'
+                }
+            },
+        },
+        leyenda: {
+            limite_comunal: {
+                titulo: 'Comuna de La Higuera',
+                items: [
+                    {color: '#FF6B6B', label: 'La Higuera'}
+                ]
+            },
+        }
+    },
     pesca: {
-        capas: ['pesca_caletas', 'pesca_infraestructura_doh', 'pesca_aaa','pesca_amerb','pesca_concesiones','pesca_planes_manejo','pesca_areas_protegidas'],
+        capas: ['pesca_caletas', 'pesca_infraestructura_doh', 'pesca_aaa','pesca_amerb','pesca_concesiones','pesca_planes_manejo','pesca_areas_protegidas','limite_comunal_linea'],
         estilo: {
             pesca_caletas: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -918,7 +1201,7 @@ const temasConfig = {
         }
     },
     riesgo: {
-        capas: ['riesgo_puntos_criticos', 'riesgo_remocion_masa', 'riesgo_punto_encuentro','riesgo_cota30mt', 'riesgo_linea_segura', 'riesgo_via_evacuacion','riesgo_area_evacuar'],
+        capas: ['riesgo_puntos_criticos', 'riesgo_remocion_masa', 'riesgo_punto_encuentro','riesgo_cota30mt', 'riesgo_linea_segura', 'riesgo_via_evacuacion','riesgo_area_evacuar','limite_comunal_linea'],
         estilo: {
             riesgo_puntos_criticos: {
                 type: 'point', // Tipo de capa: point, line, polygon
@@ -1136,6 +1419,645 @@ const temasConfig = {
             },
         }
     },
+    infraestructura: {
+        capas: ['infraestructura_municipio', 'infraestructura_parvulos', 'infraestructura_salud','infraestructura_colegios', 'infraestructura_carabineros', 'infraestructura_deportes','infraestructura_compañias', 'infraestructura_bibliotecas','infraestructura_cuerpos_bomberos','limite_comunal_linea'],
+        estilo: {
+            infraestructura_municipio: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'NOM_COM', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Municipio', // Nombre personalizado de la Capa
+                iconos: {
+                    'La Higuera': 'Municipio.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'DIRECCION',
+                    'Descripcion',
+                    'Origen Data',
+                    ],
+                alias: {
+                    'DIRECCION': 'Dirección',
+                    'Descripcion':'Descripcion',
+                    'Origen Data':'Origen de la Informacion'
+                }
+            },
+            infraestructura_parvulos: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'NOM_COM_ES', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'E. Educación Parvularia', // Nombre personalizado de la Capa
+                iconos: {
+                    'LA HIGUERA': 'Parvulario.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'NOM_ESTAB',
+                    'Dependencia',
+                    'Ruralidad',
+                    'N_TOTAL',
+                    'DIRECCION',
+                    'NUMERO',
+                    'REFERENCIA',
+                    'Descripcion',
+                    'Origen Dato',
+                    ],
+                alias: {
+                    'NOM_ESTAB': 'Nombre del establecimiento',
+                    'Dependencia': 'Organismo Dependiente',
+                    'Ruralidad':'Area Geográfica',
+                    'N_TOTAL': 'Matricula Total',
+                    'DIRECCION':'Dirección',
+                    'NUMERO':'Número',
+                    'REFERENCIA':'Referencia',
+                    'Descripcion':'Descripcion',
+                    'Origen Dato':'Origen del Dato'
+                }
+            },
+            infraestructura_salud: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'COD_DEP', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Establecimientos de Salud', // Nombre personalizado de la Capa
+                iconos: {
+                    '5': 'Salud.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'NOMBRE',
+                    'TIPO',
+                    'DEP_ADM',
+                    'NIVEL',
+                    'PRESTADOR',
+                    'COMPLEJIDA',
+                    'TIPO_ATEN',
+                    'URGENCIA',
+                    'TIPO_URGE',
+                    'Descripcion',
+                    'Origen Data',
+                    ],
+                alias: {
+                    'NOMBRE': 'Nombre',
+                    'TIPO': 'Tipo',
+                    'NIVEL':'Nivel',
+                    'PRESTADOR': 'Prestador',
+                    'COMPLEJIDA':'Complegidad',
+                    'TIPO_ATEN':'Tipo de Atención',
+                    'URGENCIA':'¿Cuenta con Urgencias?',
+                    'TIPO_URGE':'Tipo de Urgencias',
+                    'Descripcion':'Descripcion',
+                    'Origen Dato':'Origen de la Informacion'
+                }
+            },
+            infraestructura_colegios: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'TIPO_SOST', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'E. Educación Escolar', // Nombre personalizado de la Capa
+                iconos: {
+                    '1': 'escolar.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'NOM_RBD',
+                    'DIRECCION',
+                    'NUMERO',
+                    'REFERENCIA',
+                    'MAT_PARV',
+                    'MAT_BAS_RE',
+                    'MAT_MHC_RE',
+                    'MAT_HOM_TO',
+                    'MAT_MUJ_TO',
+                    'MAT_TOTAL',
+                    'Descripcion',
+                    'Origen Dato',
+                    ],
+                alias: {
+                    'NOM_RBD':'Nombre del Establecimiento',
+                    'DIRECCION':'Dirección',
+                    'NUMERO':'Número',
+                    'REFERENCIA':'Referencia',
+                    'MAT_PARV': 'Nº Mat. Parvularia',
+                    'MAT_BAS_RE':'Nº Mat. Basica',
+                    'MAT_MHC_RE':'Nº Mat. Media',
+                    'MAT_HOM_TO':'Mat. Total Hombres',
+                    'MAT_MUJ_TO':'Mat. Total Mujeres',
+                    'MAT_TOTAL':'Matrícula Total',
+                    'Descripcion':'Descripcion',
+                    'Origen Dato':'Origen de la Informacion'
+                }
+            },
+            infraestructura_carabineros: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'RG', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Carabineros de Chile', // Nombre personalizado de la Capa
+                iconos: {
+                    '4': 'Carabineros.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'NOMBRE_UNI',
+                    'TIPO_DE_UN',
+                    'NOMBRE_DE',
+                    'NUMERO',
+                    'Descripcion',
+                    'Origen Dato',
+                    ],
+                alias: {
+                    'NOMBRE_UNI': 'Nombre de la Unidad',
+                    'TIPO_DE_UN': 'Tipo de Unidad',
+                    'NOMBRE_DE':'Direccion',
+                    'NUMERO': 'Numero',
+                    'Descripcion':'Descripcion',
+                    'Origen Dato':'Origen de la Informacion'
+                }
+            },
+            infraestructura_deportes: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'CATEGORIA', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Infraestructura Deportiva', // Nombre personalizado de la Capa
+                iconos: {
+                    'Base': 'Deportes.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'NOMBRE',
+                    'CONDICIO',
+                    'SECTOR',
+                    'ACCESO_DIS',
+                    'TIPO_ENTRA',
+                    'Descripcion',
+                    'Origen Dato',
+                    ],
+                alias: {
+                    'NOMBRE': 'Nombre',
+                    'CONDICIO': 'Tipo',
+                    'SECTOR':'¿Público - Privado?',
+                    'ACCESO_DIS': 'Acceso Discapacidad',
+                    'TIPO_ENTRA':'Tipo de Entrada',
+                    'Descripcion':'Descripcion',
+                    'Origen Data':'Origen de la Informacion'
+                }
+            },
+            infraestructura_compañias: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'CUT_CUERPO', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Compañias de Bomberos', // Nombre personalizado de la Capa
+                iconos: {
+                    '04112': 'Bomberos.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'COMPAñIA',
+                    'DIRECCION',
+                    'TELEFONO',
+                    'Descripcion',
+                    'Origen Data',
+                    ],
+                alias: {
+                    'COMPAñIA': 'Nombre compañia',
+                    'DIRECCION': 'Direccion',
+                    'TELEFONO':'Telefono',
+                    'Descripcion':'Descripción',
+                    'Origen Data':'Origen de la Información'
+                }
+            },
+            infraestructura_bibliotecas: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'comuna', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Bibliotecas Publicas', // Nombre personalizado de la Capa
+                iconos: {
+                    'La Higuera': 'Biblioteca.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'recinto',
+                    'codigo',
+                    'tipo_recin',
+                    'web_nac',
+                    'nombre_via',
+                    'num_via',
+                    'actualiza',
+                    'Descripcion',
+                    'Origen Data',
+                    ],
+                alias: {
+                    'recinto': 'Nombre',
+                    'codigo': 'Codigo Biblioteca',
+                    'tipo_recin':'Tipo',
+                    'web_nac': 'Web',
+                    'nombre_via':'Direccion',
+                    'num_via':'Numero',
+                    'actualiza':'Ultima Actualizacion Dato',
+                    'Descripcion':'Descripcion',
+                    'Origen Dato':'Origen de la Informacion'
+                }
+            },
+            infraestructura_cuerpos_bomberos: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'NOMBRE_DEL', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Cuerpos de Bomberos', // Nombre personalizado de la Capa
+                iconos: {
+                    'La Higuera': 'Bomberos.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'NOMBRE_DEL',
+                    'NOMBRE_DE',
+                    'NUMERACIó',
+                    'Descripcion',
+                    'Origen Data',
+                    ],
+                alias: {
+                    'NOMBRE_DEL': 'Nombre del Cuerpo',
+                    'NOMBRE_DE': 'Direccion',
+                    'NUMERACIó':'Numero',
+                    'Descripcion':'Descripcion',
+                    'Origen Data':'Origen de la Informacion'
+                }
+            },
+        },
+        leyenda: {
+            limite_comunal: {
+                titulo: 'Comuna de La Higuera',
+                items: [
+                    {color: '#FF6B6B', label: 'La Higuera'}
+                ]
+            },
+        }
+    },
+    planificacion: {
+        capas: ['ipt_prc', 'ipt_prc_inundables', 'ipt_ZUBC','ipt_pri_elqui','limite_comunal_linea'],
+        estilo: {
+            ipt_ZUBC: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'Z_COMUNAL', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Zonificacion de Uso del Borde Costero', // Nombre personalizado de la Capa
+                colores: {
+                    'ZONA AAA': '#1E201E',
+                    'ZONA DE ASENTAMIENTOS HUMANOS': '#7C93C3',
+                    'ZONA DE CONSERVACION DE LA NATURALEZA': '6C4E31',
+                    'ZONA DE CONSERVACION DEL PATRIMONIO CULTURAL Y ARQ': '#FFDBB5',
+                    'ZONA DE PESCA ARTESANAL Y CALETAS': '#7AB2D3',
+                    'ZONA DE RESTRICCION POR RIESGO': '#AF1740',
+                    'ZONA FORESTAL': '#898121',
+                    'ZONA INDUSTRIAL': '#9A7E6F',
+                    'ZONA PORTUARIA': '#B7B7B7',
+                    'ZONA PREFERENTEMENTE TURISTICA': '#6439FF',
+                },
+                popupCampos: ['Z_COMUNAL', 'USO', 'REGIONAL','LEYENDA','Nota','Mapa Completo','Link Memoria','Origen Dato'],
+                alias: {
+                    'Z_COMUNAL': 'Nombre',
+                    'LEYENDA': 'Id',
+                    'USO': 'Sub Uso',
+                    'REGIONAL': 'Uso Regional',
+                    'Mapa Completo': 'Mapa completo de la Zonificacion',
+                    'Link Memoria': 'Memoria de la Zonificacion',
+                    'Nota':'Descripcion',
+                    'Origen Dato':'Origen de la Informacion'
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#1E201E', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.5 // Transparencia del relleno
+                }
+            },
+            ipt_pri_elqui: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'ZONA', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Plan Regulador Intercomunal', // Nombre personalizado de la Capa
+                colores: {
+                    'APVN': '#78B3CE',
+                    'AU': '#C9E6F0A',
+                    'AV': '#8EB486',
+                    'ZEU-2': '#A59D84',
+                    'ZEU-3': '#C1BAA1',
+                    'ZEU-6': '#D7D3BF',
+                    'ZEU-7': '#ECEBDE',
+                    'ZEU-P1': '#E195AB',
+                    'ZEU-P2': '#FFCCE1',
+                },
+                popupCampos: ['ZONA', 'NOM', 'UPERM', 'UPROH', 'LOC', 'T_DO', 'N_DOC', 'P_DO',  'Link Decreto', 'Link Ordenanza', 'Link LGUC', 'Ordenanza LGUC', 'Descripcion', 'Origen Data'],
+                alias: {
+                    'ZONA': 'Zona',
+                    'NOM': 'Descripcion Zona',
+                    'UPERM':'Usos Permitidos',
+                    'UPROH': 'Uso Prohibido',
+                    'LOC':'Localidad',
+                    'T_DO':'Tipo Documento',
+                    'N_DOC':'Numero Documento',
+                    'P_DO':'Fecha Publicacion',
+                    'Link Decreto':'Link Decreto',
+                    'Link Ordenanza':'Ordenanza Plan Regulador',
+                    'Link LGUC':'Ley General Urbanismo y Construccion',
+                    'Ordenanza LGUC':'Ordenanza LGUC',
+                    'Descripcion':'Descripcion',
+                    'Origen Data':'Origen de la Informacion'
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#8EA3A6', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.5 // Transparencia del relleno
+                }
+            },
+            ipt_prc: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'ZONA', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Plan Regulador Comunal', // Nombre personalizado de la Capa
+                colores: {
+                    'Plaza': '#DDA853',
+                    'ZAP': '#FFFBCA',
+                    'ZAV': '#889E73',
+                    'ZC': '#500073',
+                    'ZCH1': '#CBA35C',
+                    'ZCH2': '#754E1A',
+                    'ZE': '#CDC1FF',
+                    'ZIP': '#FF8383',
+                    'ZIS': '#9AA6B2',
+                    'ZU1': '#9ACBD0',
+                    'ZU2': '#48A6A7',
+                    'ZU3': '#2973B2',
+                    'ZU4': '#23486A',
+                    'ZU5': '#09122C'
+                },
+                popupCampos: ['ZONA', 'NOM', 'UPERM', 'UPROH', 'LOC', 'T_DO', 'N_DOC', 'P_DO',  'Link Decreto', 'Link Ordenanza', 'Link LGUC', 'Ordenanza LGUC', 'Descripcion', 'Origen Data'],
+                alias: {
+                    'ZONA': 'Zona',
+                    'NOM': 'Descripcion Zona',
+                    'UPERM':'Usos Permitidos',
+                    'UPROH': 'Uso Prohibido',
+                    'LOC':'Localidad',
+                    'T_DO':'Tipo Documento',
+                    'N_DOC':'Numero Documento',
+                    'P_DO':'Fecha Publicacion',
+                    'Link Decreto':'Link Decreto',
+                    'Link Ordenanza':'Ordenanza Plan Regulador',
+                    'Link LGUC':'Ley General Urbanismo y Construccion',
+                    'Ordenanza LGUC':'Ordenanza LGUC',
+                    'Descripcion':'Descripcion',
+                    'Origen Data':'Origen de la Informacion'
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#4B5945', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.5 // Transparencia del relleno
+                }
+            },
+            ipt_prc_inundables: {
+                type: 'polygon', // Tipo de capa: point, line, polygon
+                atributo: 'ZONA', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Plan Regulador Comunal - Zonas Inundables', // Nombre personalizado de la Capa
+                colores: {
+                    'AR1': '#F2B28C',
+                    'AR2': '#D2665A',
+                    'AR3': '#B82132'
+                },
+                popupCampos: ['ZONA', 'NOM', 'UPERM', 'LOC', 'T_DO', 'N_DOC', 'P_DO',  'Link Decreto', 'Link Ordenanza', 'Link LGUC', 'Ordenanza LGUC', 'Descripcion', 'Origen Data'],
+                alias: {
+                    'ZONA': 'Zona',
+                    'NOM': 'Descripcion Zona',
+                    'UPERM':'Usos Permitidos',
+                    'LOC':'Localidad',
+                    'T_DO':'Tipo Documento',
+                    'N_DOC':'Numero Documento',
+                    'P_DO':'Fecha Publicacion',
+                    'Link Decreto':'Link Decreto',
+                    'Link Ordenanza':'Ordenanza Plan Regulador',
+                    'Link LGUC':'Ley General Urbanismo y Construccion',
+                    'Ordenanza LGUC':'Ordenanza LGUC',
+                    'Descripcion':'Descripcion',
+                    'Origen Data':'Origen de la Informacion'
+                },
+                // Personalizar el color del borde y la transparencia
+                estiloBase: {
+                    color: '#B82132', // Color del borde
+                    weight: 1, // Grosor del borde
+                    // Opacity: sirve para darle transparencia a las lineas
+                    fillOpacity: 0.5 // Transparencia del relleno
+                }
+            },
+        },
+        leyenda: {
+            limite_comunal: {
+                titulo: 'Comuna de La Higuera',
+                items: [
+                    {color: '#FF6B6B', label: 'La Higuera'}
+                ]
+            },
+        }
+    },
+    inversiones: {
+        capas: ['inversiones_SEIA', 'inversiones_bip','inversiones_geo_cgr','limite_comunal_linea'],
+        estilo: {
+            inversiones_SEIA: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'Sector Productivo', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Inversiones Privadas 2010 - 2025', // Nombre personalizado de la Capa
+                iconos: {
+                    'Energia': 'inv_energia.png',
+                    'Infraestructura Portuaria': 'inv_portuaria.png',
+                    'Mineria': 'inv_mineria.png',
+                    'Otros':'inv_Otros.png',
+                    'Pesca y Acuicultura':'inv_pesca.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'Nombre',
+                    'Sector Productivo',
+                    'Inversion (MMU$)',
+                    'Titular',
+                    'Tipo',
+                    'Estado',
+                    'Fecha Calificacion',
+                    'Link del Expediente',
+                    'Descripcion',
+                    'Origen del Dato'
+                    ],
+                alias: {
+                    'Nombre': 'Nombre Proyecto',
+                    'Sector Productivo': 'Sector Productivo',
+                    'Inversion (MMU$)':'Inversion en MMU$',
+                    'Titular': 'Titular del Proyecto',
+                    'Tipo':'Tipo de Ingreso Al SEIA',
+                    'Estado':'Estado del Proyecto',
+                    'Fecha Calificacion':'Fecha Calificacion',
+                    'Link del Expediente':'Link Expediente SEIA',
+                    'Descripcion':'Descripcion',
+                    'Origen del Dato':'Origen de la Data'
+                }
+            },
+            inversiones_bip: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'SECTOR', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Inversion Pública 2015-2025 - BIP', // Nombre personalizado de la Capa
+                iconos: {
+                    'DEPORTES': 'pub_deporte.png',
+                    'EDUCACION, CULTURA Y PATRIMONIO': 'pub_educacion.png',
+                    'MULTISECTORIAL': 'pub_multisectorial.png',
+                    'PESCA': 'pub_pesca.png',
+                    'RECURSOS HIDRICOS': 'pub_hidraulicas.png',
+                    'SALUD': 'pub_salud.png',
+                    'SEGURIDAD PUBLICA': 'pub_seguridad.png',
+                    'TRANSPORTE': 'pub_transporte.png',
+                    'VIVIENDA Y DESARROLLO URBANO': 'pub_habitacional.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'DESCRIPCIÓN',
+                    'SECTOR',
+                    'SUB SECTOR',
+                    'AÑO POSTULACIÓN',
+                    'CÓDIGO BIP',
+                    'COSTO TOTAL [M$]',
+                    'ETAPA ACTUAL',
+                    'INSTITUCIÓN FORMULADORA',
+                    'INSTITUCIÓN FINANCIERA',
+                    'FUENTE FINANCIERA',
+                    'Descripcion',
+                    'Origen de la Informacion'
+                    ],
+                alias: {
+                    'DESCRIPCIÓN': 'Nombre Proyecto',
+                    'SECTOR': 'Sector',
+                    'SUB SECTOR':'Sub Sector',
+                    'AÑO POSTULACIÓN': 'Año Postulacion',
+                    'CÓDIGO BIP':'Codigo BIP',
+                    'COSTO TOTAL [M$]':'Costo total Proyecto en M$',
+                    'ETAPA ACTUAL':'Etapa Actual',
+                    'INSTITUCIÓN FORMULADORA':'Institución Formuladora',
+                    'INSTITUCIÓN FINANCIERA':'Institución Financiera',
+                    'FUENTE FINANCIERA':'Fuente Financiera',
+                    'Descripcion':'Nota',
+                    'Origen de la Informacion':'Origen de la Información'
+                }
+            },
+            inversiones_geo_cgr: {
+                type: 'point', // Tipo de capa: point, line, polygon
+                atributo: 'CLASIFICACION', // Asegúrate de que este atributo exista en tu GeoJSON
+                nombrePersonalizado: 'Inversion Pública 2015-2025 - GEOCGR', // Nombre personalizado de la Capa
+                iconos: {
+                    'Areas verdes; esparcimiento y equipamiento vario urbano y rural': 'pub_areaverde.png',
+                    'Deporte': 'pub_deporte.png',
+                    'Edificaciones públicas': 'pub_edificacion.png',
+                    'Educación y cultura': 'pub_educacion.png',
+                    'Habitacional': 'pub_habitacional.png',
+                    'Hidráulicas': 'pub_hidraulicas.png',
+                    'Portuarias y aeroportuarias': 'pub_portuaria.png',
+                    'Salud y sanidad': 'pub_salud.png',
+                    'Transporte terrestre': 'pub_transporte.png'
+                },
+                estiloAlternativo: {
+                    color: '#FF6B6B', // Color del borde del punto
+                    fillColor: '#FF6B6B', // Color de relleno del punto
+                    radius: 5, // Radio del punto
+                    weight: 1, // Grosor del borde del punto
+                    fillOpacity: 0.8 // Transparencia del relleno del punto
+                },
+                popupCampos: [
+                    'Titulo',
+                    'DESCRIPCION',
+                    'CLASIFICACION',
+                    'MONTO_VIGENTE',
+                    'F_ADJUDICACION',
+                    'URL_ACTA',
+                    'SERV_MAND',
+                    'CODIGO_BIP',
+                    'ID_MERCADO_PUB',
+                    'Descripcion_1',
+                    'Origen Data'
+                    ],
+                alias: {
+                    'Titulo':'Nombre Proyecto',
+                    'DESCRIPCION':'Descripcion',
+                    'CLASIFICACION':'Categoria',
+                    'MONTO_VIGENTE':'Monto en pesos',
+                    'F_ADJUDICACION':'Fecha Adjudicacion',
+                    'URL_ACTA':'Acta Adjudicacion',
+                    'SERV_MAND':'Servicio Mandante',
+                    'CODIGO_BIP':'Codigo BIP',
+                    'ID_MERCADO_PUB':'Codigo Mercado Publico',
+                    'Descripcion_1':'Nota',
+                    'Origen Data':'Origen de la Data'
+                }
+            },
+        },
+        leyenda: {
+            limite_comunal: {
+                titulo: 'Comuna de La Higuera',
+                items: [
+                    {color: '#FF6B6B', label: 'La Higuera'}
+                ]
+            },
+        }
+    },
 };
 
 // Configuración de capas base
@@ -1153,20 +2075,4 @@ const capasBaseConfig = {
         nombre: 'OpenTopoMap'
     }
     // Puedes agregar más capas base aquí
-};
-
-// Capa común
-const commonLayersConfig = {
-    limite_comunal: {
-        type: 'polygon',
-        nombrePersonalizado: 'Limite Comunal',
-        atributo: 'NOM_COMUNA',
-        colores: { 'La Higuera': '#FF6B6B' },
-        popupCampos: ['NOM_COMUNA', 'NOM_PROVIN', 'NOM_REGION'],
-        estiloBase: {
-            color: '#2d3436',
-            weight: 2,
-            fillOpacity: 0
-        }
-    }
 };
