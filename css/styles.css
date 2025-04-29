@@ -1,162 +1,198 @@
 /* Estilos generales */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    /* 
-      Para compensar la altura del navbar en modo móvil,
-      se agrega un padding-top en pantallas pequeñas
-      (generalmente 56px es la altura de un navbar standard).
-    */
+  font-family: 'Segoe UI', sans-serif;
+/*
+    Para compensar la altura del navbar en modo móvil,
+    se agrega un padding-top en pantallas pequeñas
+    (generalmente 56px es la altura de un navbar standard).
+*/
+}
+.container-fluid {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.row.g-0 {
+  margin: 0 !important;
+}
+.col-12, .col-md-10, .col-md-2 {
+  padding: 0 !important;
+}
+/* Sidebar izquierdo */
+.sidebar {
+  height: 100vh;
+/* Esto sí se mantiene para escritorio */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+.bg-dark-blue {
+  background-color: #1a1a2e;
+}
+.text-accent {
+  color: #45B69C;
+}
+/* Botones del sidebar */
+.theme-btn {
+  background: #2c2c54;
+  color: white !important;
+  text-align: left;
+  transition: all 0.3s;
+  border: none;
+  width: 100%;
+}
+.theme-btn:hover {
+  background: #45B69C;
+  transform: translateX(5px);
+}
+/* Mapa */
+#map {
+  /* En escritorio, el mapa ocupa todo el espacio disponible de su contenedor */
+  height: 100vh;
+  background: #f8f9fa;
+}
+/* Popups personalizados */
+.leaflet-popup-content {
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.popup-content p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+/* Leyenda */
+.legend-container {
+  padding: 10px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 1px solid #666;
+}
+
+/* Estilos para etiquetas de las capas (Estilo original - puede que no se use directamente ahora) */
+/* .label-icon {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 1px;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #000000;
+  white-space: nowrap;
+  pointer-events: none;
+} */
+
+/* Nuevos estilos para etiquetas con contorno */
+/* Eliminar el fondo y borde por defecto del tooltip para nuestras etiquetas personalizadas */
+.leaflet-tooltip.custom-outlined-label-tooltip {
+  background: none !important; /* Eliminar fondo */
+  border: none !important; /* Eliminar borde */
+  box-shadow: none !important; /* Eliminar sombra */
+  padding: 0 !important; /* Eliminar relleno */
+  margin: 0 !important; /* Asegurar que no haya margen adicional */
+}
+
+/* Estilo para el texto con contorno dentro del tooltip */
+.leaflet-tooltip.custom-outlined-label-tooltip .outlined-text {
+  white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+  /* font-family se puede definir aquí o en el estilo inline */
+  /* font-family: Arial, sans-serif; */
+
+  /*
+    Se eliminan las propiedades 'color' y 'font-size' de esta regla CSS
+    para que sean controladas únicamente por los estilos inline
+    desde la función agregarEtiquetas en app.js.
+  */
+  /* REMOVED: color: #FFFFFF; */
+  /* REMOVED: font-size: 12px; */
+
+  /* Propiedades de text-stroke para el contorno (pueden tener un valor por defecto,
+     pero serán sobrescritas por los estilos inline desde JS) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #FF0000;
+  text-stroke-width: 1px;
+  text-stroke-color: #FF0000;
+}
+
+
+/* Estilos para el sidebar derecho */
+.layers-container,
+.legend-container {
+  padding: 5px;
+}
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+.offcanvas-body {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.collapse.show {
+  flex-grow: 1;
+}
+/* Estilos para el botón flotante */
+#sidebar-toggle-button,
+#sidebar-left-toggle-button {
+  z-index: 1050;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #45B69C;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+#sidebar-toggle-button:hover,
+#sidebar-left-toggle-button:hover {
+  background-color: #38a78c;
+  transform: translateY(-50%) scale(1.1);
+}
+#sidebar-toggle-button {
+  right: 15px;
+}
+#sidebar-left-toggle-button {
+  left: 15px;
+}
+/* Ajustes Responsive */
+@media (max-width: 768px) {
+  /* 1. Asegurar que el navbar esté siempre sobre el mapa */
+  .navbar.fixed-top {
+    z-index: 2000;
   }
-  .container-fluid {
-    padding: 0 !important;
-    margin: 0 !important;
+  /* 2. Agregar espacio en la parte superior del body para no quedar debajo del navbar */
+  body {
+    padding-top: 56px;
+  /* Ajusta según la altura real de tu navbar */
   }
-  .row.g-0 {
-    margin: 0 !important;
-  }
-  .col-12, .col-md-10, .col-md-2 {
-    padding: 0 !important;
-  }
-  /* Sidebar izquierdo */
+  /* 3. El sidebar izquierdo se oculta en móvil */
   .sidebar {
-    height: 100vh; /* Esto sí se mantiene para escritorio */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    display: none;
   }
-  .bg-dark-blue {
-    background-color: #1a1a2e;
-  }
-  .text-accent {
-    color: #45B69C;
-  }
-  /* Botones del sidebar */
-  .theme-btn {
-    background: #2c2c54;
-    color: white !important;
-    text-align: left;
-    transition: all 0.3s;
-    border: none;
-    width: 100%;
-  }
-  .theme-btn:hover {
-    background: #45B69C;
-    transform: translateX(5px);
-  }
-  /* Mapa */
+  /* 4. Ajustar el mapa para ocupar el alto total menos la navbar */
   #map {
-    /* En escritorio, el mapa ocupa todo el espacio disponible de su contenedor */
-    height: 100vh; 
-    background: #f8f9fa;
+    width: 100%;
+    height: 100vh;
+    margin: 0 !important; /* Importante quitar márgenes extra */
   }
-  /* Popups personalizados */
-  .leaflet-popup-content {
-    min-width: 200px;
-    max-height: 300px;
-    overflow-y: auto;
+  .offcanvas {
+    width: 100% !important;
   }
-  .popup-content p {
-    margin: 5px 0;
-    font-size: 0.9em;
+  .navbar .container-fluid {
+      padding: 0 1rem !important;
   }
-  /* Leyenda */
-  .legend-container {
-    padding: 10px;
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-  }
-  .legend-color {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    border: 1px solid #666;
-  }
-  /* Estilos para etiquetas de las capas */
-  .label-icon {
-    background-color: rgba(255, 255, 255, 0.4);
-    padding: 1px;
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    color: #000000;
-    white-space: nowrap;
-    pointer-events: none; 
-  }
-  /* Estilos para el sidebar derecho */
-  .layers-container,
-  .legend-container {
-    padding: 5px;
-  }
-  .btn-secondary {
-    background-color: #6c757d;
-    border-color: #6c757d;
-  }
-  .btn-secondary:hover {
-    background-color: #5a6268;
-    border-color: #545b62;
-  }
-  .offcanvas-body {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-  }
-  .collapse.show {
-    flex-grow: 1;
-  }
-  /* Estilos para el botón flotante */
-  #sidebar-toggle-button,
-  #sidebar-left-toggle-button {
-    z-index: 1050;
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #45B69C;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 50%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    font-size: 18px;
-    transition: all 0.3s ease;
-  }
-  #sidebar-toggle-button:hover,
-  #sidebar-left-toggle-button:hover {
-    background-color: #38a78c;
-    transform: translateY(-50%) scale(1.1);
-  }
-  #sidebar-toggle-button {
-    right: 15px;
-  }
-  #sidebar-left-toggle-button {
-    left: 15px;
-  }
-  /* Ajustes Responsive */
-  @media (max-width: 768px) {
-    /* 1. Asegurar que el navbar esté siempre sobre el mapa */
-    .navbar.fixed-top {
-      z-index: 2000; 
-    }
-    /* 2. Agregar espacio en la parte superior del body para no quedar debajo del navbar */
-    body {
-      padding-top: 56px; /* Ajusta según la altura real de tu navbar */
-    }
-    /* 3. El sidebar izquierdo se oculta en móvil */
-    .sidebar {
-      display: none;
-    }
-    /* 4. Ajustar el mapa para ocupar el alto total menos la navbar */
-    #map {
-      width: 100%;
-      height: 100vh;
-      margin: 0 !important; /* Importante quitar márgenes extra */
-    }
-    .offcanvas {
-      width: 100% !important;
-    }
-    .navbar .container-fluid {
-        padding: 0 1rem !important;
-      }
-  }
-  
+}
