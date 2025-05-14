@@ -210,13 +210,13 @@ const temasConfig = {
                 type: 'point', // Tipo de capa: point, line, polygon
                 atributo: 'Tipo', // Asegúrate de que este atributo exista en tu GeoJSON
                 nombrePersonalizado: 'Toponimia', // Nombre personalizado de la Capa
-                iconos: {
+                iconos: { // Edicion de Iconos
                     'Localidad': 'localidad.png'
                 },
-                estiloAlternativo: {
+                estiloAlternativo: {// Icono alternativo en caso que no encuentre el icono
                     color: '#FF6B6B', // Color del borde del punto
                     fillColor: '#FF6B6B', // Color de relleno del punto
-                    radius: 5, // Radio del punto
+                    radius: 4, // Radio del punto
                     weight: 1, // Grosor del borde del punto
                     fillOpacity: 0.8 // Transparencia del relleno del punto
                 },
@@ -232,7 +232,7 @@ const temasConfig = {
                         fontFamily: 'Arial, sans-serif', // Familia de la fuente
                         bufferColor: '#88304E', // Color del contorno
                         bufferWidth: 0.3, // Ancho del contorno
-                        offsetY: 100 // Añadida propiedad para el offset vertical
+                        offset: [0, 15] // Añadida propiedad para el offset vertical
                     }
                 }
             },
@@ -329,8 +329,8 @@ const temasConfig = {
                 alias: {
                     'COMUNA': 'Comuna',
                     'REGION': 'Region',
-                    'Superficie_ha': 'Superficie (ha)',
-                    'Potencia_MW':'Potencia (MW)',
+                    'Superficie_ha': 'Sup. Total Comunal(ha)',
+                    'Potencia_MW':'Potencia Total Comunal(MW)',
                     'Origen de la Data':'Origen de la Informacion'
                 },
                 // Personalizar el color del borde y la transparencia
@@ -522,7 +522,7 @@ const temasConfig = {
                     weight: 1, // Grosor del borde del punto
                     fillOpacity: 0.8 // Transparencia del relleno del punto
                 },
-                popupCampos: ['Código de', 'Nombre Sol', 'Unidad de','Fecha de R','Nº Resolu','Fecha Toma','Tipo Derec', 'Naturaleza','Uso del Ag','Cuenca','Fuente','Caudal An','Ejercicio','Origen','Ult_Actual','Link_Data'],
+                popupCampos: ['Código de', 'Nombre Sol', 'Unidad de','Fecha de R','Nº Resolu','Fecha Toma','Tipo Derec', 'Naturaleza','Uso del Ag','Cuenca','Fuente','Caudal An','Ejercicio','Origen','Ult_Actual','Link_ Data'],
                 alias: {
                     'Código de': 'Codigo de Expediente',
                     'Nombre Sol': 'Nombre del Solicitante',
@@ -539,7 +539,7 @@ const temasConfig = {
                     'Ejercicio':'Ejercicio del Derecho',
                     'Origen':'Origen de la Informacion',
                     'Ult_Actual':'Ultima consulta realizada de la informacion',
-                    'Link_Data':'Direcccion de acceso a la fuente de los datos',
+                    'Link_ Data':'Direcccion de acceso a la fuente de los datos',
                 }
             },
             Agro_apr: {
@@ -577,14 +577,14 @@ const temasConfig = {
                     'Limonero': '#D34F1E',
                     'Nectarino': '#ECA106',
                 },
-                popupCampos: ['Comuna', 'Especie', 'Variedad','Año plantacion','Nº Arboles','Superficie','Descripcion','Origen del Dato'],
+                popupCampos: ['Comuna', 'Especie', 'Variedad','Año plantacion','Nª Arboles','Sup. en ha','Descripcion','Origen del Dato'],
                 alias: {
                     'Comuna': 'Comuna',
-                    'Especie': 'Especia',
+                    'Especie': 'Especie',
                     'Variedad': 'Variedad',
                     'Año plantacion':'Año Plantacion',
-                    'Nº Arboles':'Nº Arboles',
-                    'Superficie':'Superficie',
+                    'Nª Arboles':'Nº Arboles',
+                    'Sup. en ha':'Superficie en Ha',
                     'Descripcion':'Descripcion',
                     'Origen del Dato':'Origen del Dato',
                 },
