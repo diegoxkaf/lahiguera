@@ -11,7 +11,7 @@
 { "type": "Feature", "properties": { "fid": 6, "Nombre": "Punta Colorada", "Tipo": "Localidad" }, "geometry": { "type": "Point", "coordinates": [ -71.016759732008083, -29.353705175390434 ] } },
 { "type": "Feature", "properties": { "fid": 7, "Nombre": "La Higuera", "Tipo": "Localidad" }, "geometry": { "type": "Point", "coordinates": [ -71.20135893342065, -29.511723575872193 ] } },
 { "type": "Feature", "properties": { "fid": 8, "Nombre": "Los Choros", "Tipo": "Localidad" }, "geometry": { "type": "Point", "coordinates": [ -71.309199336399274, -29.290742510507126 ] } },
-{ "type": "Feature", "properties": { "fid": 9, "Nombre": "El Trapinche", "Tipo": "Localidad" }, "geometry": { "type": "Point", "coordinates": [ -71.114644481065497, -29.374791374068405 ] } },
+{ "type": "Feature", "properties": { "fid": 9, "Nombre": "El Trapiche", "Tipo": "Localidad" }, "geometry": { "type": "Point", "coordinates": [ -71.114644481065497, -29.374791374068405 ] } },
 { "type": "Feature", "properties": { "fid": 10, "Nombre": "Los Morros", "Tipo": "Localidad" }, "geometry": { "type": "Point", "coordinates": [ -70.743175800460691, -29.384632189035813 ] } },
 { "type": "Feature", "properties": { "fid": 11, "Nombre": "Observatorio La Silla", "Tipo": "Localidad" }, "geometry": { "type": "Point", "coordinates": [ -70.73892013384453, -29.256047895799444 ] } },
 { "type": "Feature", "properties": { "fid": 12, "Nombre": "Totoralillo Norte", "Tipo": "Localidad" }, "geometry": { "type": "Point", "coordinates": [ -71.326948580091667, -29.493826366604917 ] } },
