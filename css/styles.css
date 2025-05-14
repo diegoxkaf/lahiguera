@@ -1,11 +1,11 @@
 /* Estilos generales */
 body {
   font-family: 'Segoe UI', sans-serif;
-/*
+  /*
     Para compensar la altura del navbar en modo móvil,
     se agrega un padding-top en pantallas pequeñas
     (generalmente 56px es la altura de un navbar standard).
-*/
+  */
 }
 .container-fluid {
   padding: 0 !important;
@@ -20,12 +20,18 @@ body {
 /* Sidebar izquierdo */
 .sidebar {
   height: 100vh;
-/* Esto sí se mantiene para escritorio */
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Nuevo: Contiene el contenido */
 }
 .bg-dark-blue {
   background-color: #1a1a2e;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Nuevo: Habilita scroll vertical */
 }
 .text-accent {
   color: #45B69C;
@@ -38,14 +44,29 @@ body {
   transition: all 0.3s;
   border: none;
   width: 100%;
+  padding: 0.75rem 1rem; /* Ajuste de padding */
+  margin-bottom: 0.5rem; /* Reducir margen */
+  white-space: normal; /* Permite ajuste de texto */
+  word-break: break-word; /* Rompe palabras largas */
 }
 .theme-btn:hover {
   background: #45B69C;
   transform: translateX(5px);
 }
+
+/* Offcanvas móvil */
+.offcanvas-start {
+  max-width: 280px; /* Ancho máximo reducido */
+}
+
+.offcanvas-body.bg-dark-blue {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
 /* Mapa */
 #map {
-  /* En escritorio, el mapa ocupa todo el espacio disponible de su contenedor */
   height: 100vh;
   background: #f8f9fa;
 }
@@ -75,50 +96,20 @@ body {
   border: 1px solid #666;
 }
 
-/* Estilos para etiquetas de las capas (Estilo original - puede que no se use directamente ahora) */
-/* .label-icon {
-  background-color: rgba(255, 255, 255, 0.4);
-  padding: 1px;
-  border-radius: 10px;
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  color: #000000;
-  white-space: nowrap;
-  pointer-events: none;
-} */
-
-/* Nuevos estilos para etiquetas con contorno */
-/* Eliminar el fondo y borde por defecto del tooltip para nuestras etiquetas personalizadas */
+/* Estilos para etiquetas con contorno */
 .leaflet-tooltip.custom-outlined-label-tooltip {
-  background: none !important; /* Eliminar fondo */
-  border: none !important; /* Eliminar borde */
-  box-shadow: none !important; /* Eliminar sombra */
-  padding: 0 !important; /* Eliminar relleno */
-  margin: 0 !important; /* Asegurar que no haya margen adicional */
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* Estilo para el texto con contorno dentro del tooltip */
 .leaflet-tooltip.custom-outlined-label-tooltip .outlined-text {
-  white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
-  /* font-family se puede definir aquí o en el estilo inline */
-  /* font-family: Arial, sans-serif; */
-
-  /*
-    Se eliminan las propiedades 'color' y 'font-size' de esta regla CSS
-    para que sean controladas únicamente por los estilos inline
-    desde la función agregarEtiquetas en app.js.
-  */
-  /* REMOVED: color: #FFFFFF; */
-  /* REMOVED: font-size: 12px; */
-
-  /* Propiedades de text-stroke para el contorno (pueden tener un valor por defecto,
-     pero serán sobrescritas por los estilos inline desde JS) */
+  white-space: nowrap;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #FF0000;
-  text-stroke-width: 1px;
-  text-stroke-color: #FF0000;
 }
-
 
 /* Estilos para el sidebar derecho */
 .layers-container,
@@ -141,7 +132,7 @@ body {
 .collapse.show {
   flex-grow: 1;
 }
-/* Estilos para el botón flotante */
+/* Botón flotante */
 #sidebar-toggle-button,
 #sidebar-left-toggle-button {
   z-index: 1050;
@@ -168,31 +159,130 @@ body {
 #sidebar-left-toggle-button {
   left: 15px;
 }
+
+/* Logos en sidebar */
+.logos-sidebar-container {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.sidebar-logo {
+  max-height: 35px;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.sidebar-logo:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.logo-pill-container {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+.logo-pill-container:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Footer del sidebar */
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: 1rem;
+}
+
+.sidebar-footer .theme-btn {
+  background: #3a3a5c;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-footer .theme-btn:hover {
+  background: #45B69C;
+  transform: none;
+}
+
 /* Ajustes Responsive */
 @media (max-width: 768px) {
-  /* 1. Asegurar que el navbar esté siempre sobre el mapa */
   .navbar.fixed-top {
     z-index: 2000;
   }
-  /* 2. Agregar espacio en la parte superior del body para no quedar debajo del navbar */
   body {
     padding-top: 56px;
-  /* Ajusta según la altura real de tu navbar */
   }
-  /* 3. El sidebar izquierdo se oculta en móvil */
   .sidebar {
     display: none;
   }
-  /* 4. Ajustar el mapa para ocupar el alto total menos la navbar */
   #map {
-    width: 100%;
     height: 100vh;
-    margin: 0 !important; /* Importante quitar márgenes extra */
+    margin: 0 !important;
   }
   .offcanvas {
     width: 100% !important;
   }
-  .navbar .container-fluid {
-      padding: 0 1rem !important;
+  .offcanvas-body.bg-dark-blue {
+    padding: 0 0.5rem;
   }
+  .navbar .container-fluid {
+    padding: 0 1rem !important;
+    display:flex;
+    align-items: center;
+  }
+
+  .navbar-brand {
+    margin-right: auto;       /* Empujamos el título a la izquierda */
+    font-size: 1rem;          /* Reducimos el tamaño de la fuente si es necesario */
+  }
+  .navbar .ms-auto {
+    margin-left: 0 !important; /* Reseteamos el margen */
+    display: flex;             /* Flexbox para los íconos */
+    align-items: center;
+  }
+  .theme-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+  .logo-container {
+    gap: 0.5rem !important;
+  }
+  .logos-sidebar-container {
+    padding: 0.5rem;
+  }
+  .logo-pill-container {
+    max-width: 100%;
+  }
+  .sidebar-footer {
+    padding: 0 0.5rem;
+  }
+  .sidebar-footer .theme-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  /* Margen vertical para logos en móvil */
+  .logo-container.flex-column img {
+    margin: 5px 0;
+  }
+}
+
+.modal-logo {
+  max-height: 50px;
+  width: auto;
+}
+
+/* Margen horizontal para logos en escritorio */
+.logo-container img {
+  margin: 0 10px;
+  flex-shrink: 0;
 }
