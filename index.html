@@ -3,32 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapas Temáticos GeoJSON</title>
-  <!-- Leaflet CSS -->
+  <title>Visor Territorial La Higuera</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <!-- Estilos personalizados -->
   <link rel="stylesheet" href="css/styles.css">
-  <!-- Leaflet Label CSS -->
   <link href="https://cdn.jsdelivr.net/npm/leaflet-label@0.2.1-0/dist/leaflet.label.min.css" rel="stylesheet">
-  <!-- Favicon -->
   <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue d-md-none fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Visor Territorial</a>
+      <a class="navbar-brand" href="#">Visor Territorial PTI La Higuera</a>
       <div class="ms-auto">
-        <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
+        <button class="btn btn-outline-light me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft">
           <i class="fas fa-bars"></i>
         </button>
-        <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <button class="btn btn-outline-light me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
           <i class="fas fa-layer-group"></i>
         </button>
-        <button class="btn btn-outline-light" type="button" data-bs-toggle="modal" data-bs-target="#welcomeModal">
+        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#welcomeModal">
           <i class="fas fa-info-circle"></i>
         </button>
       </div>
@@ -37,17 +31,16 @@
 
   <div class="container-fluid">
     <div class="row g-0">
-      <!-- Sidebar Izquierdo (Responsive) -->
-      <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+      <!-- Sidebar móvil -->
+      <div class="offcanvas offcanvas-start d-md-none" id="offcanvasLeft">
         <div class="offcanvas-header bg-dark-blue text-white">
-          <h5 class="offcanvas-title" id="offcanvasLeftLabel">Visor Territorial</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <h6 class="offcanvas-title">Visor Territorial PTI La Higuera</h6>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
-        <div class="offcanvas-body bg-dark-blue">
+        <div class="offcanvas-body bg-dark-blue d-flex flex-column">
           <div class="nav flex-column" id="theme-buttons-mobile">
-            <button class="btn theme-btn mb-2" data-theme="mineria">
-              <i class="fas fa-mountain"></i> Minería
-            </button>
+            <!-- Botones temáticos -->
+            <button class="btn theme-btn mb-2" data-theme="mineria"><i class="fas fa-mountain"></i> Minería</button>
             <button class="btn theme-btn mb-2" data-theme="energia">
               <i class="fas fa-bolt"></i> Energía
             </button>
@@ -75,18 +68,28 @@
               <button class="btn theme-btn mb-2" data-theme="planificacion">
                 <i class="fas fa-file-lines"></i> I. Planificación Territorial
               </button>
+            <div class="sidebar-footer mt-auto pt-3">
+              <button class="btn theme-btn mb-3 w-100" data-bs-toggle="modal" data-bs-target="#welcomeModal">
+                <i class="fas fa-info-circle"></i> Información
+              </button>
+              <div class="logo-pill-container bg-light rounded-3 p-2">
+                <div class="d-flex justify-content-center gap-2">
+                  <img src="assets/img/logo_corfo.png" alt="corfo" class="sidebar-logo">
+                  <img src="assets/img/logo-codesser.png" alt="codesser" class="sidebar-logo">
+                  <img src="assets/img/Logo Andes.jpg" alt="andesvalue" class="sidebar-logo">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Sidebar Izquierdo (Escritorio) -->
+      <!-- Sidebar escritorio -->
       <div class="col-md-2 d-none d-md-block sidebar p-0">
-        <div class="bg-dark-blue p-3 h-100 position-relative">
-          <h5 class="text-accent mb-4"><i class="fas fa-layer-group"></i> Visor Territorial</h5>
+        <div class="bg-dark-blue p-3 h-100 d-flex flex-column">
+          <h6 class="text-accent mb-4 text-center"><i class="fas fa-layer-group"></i> Visor Territorial PTI La Higuera</h6>
           <div class="nav flex-column" id="theme-buttons">
-            <button class="btn theme-btn mb-2" data-theme="mineria">
-              <i class="fas fa-mountain"></i> Minería
-            </button>
+            <button class="btn theme-btn mb-2" data-theme="mineria"><i class="fas fa-mountain"></i> Minería</button>
             <button class="btn theme-btn mb-2" data-theme="energia">
               <i class="fas fa-bolt"></i> Energía
             </button>
@@ -97,29 +100,36 @@
               <i class="fas fa-seedling"></i> Agricultura
             </button>
             <button class="btn theme-btn mb-2" data-theme="pesca">
-                <i class="fas fa-fish"></i> Pesca
-              </button>
-              <button class="btn theme-btn mb-2" data-theme="inversiones">
-                <i class="fas fa-money-bill"></i> Inversiones
-              </button>
-              <button class="btn theme-btn mb-2" data-theme="telecomunicaciones">
-                <i class="fas fa-tower-broadcast"></i> Telecomunicaciones
-              </button>
-              <button class="btn theme-btn mb-2" data-theme="infraestructura">
-                <i class="fas fa-location-dot"></i> Infraestructura
-              </button>
+              <i class="fas fa-fish"></i> Pesca
+            </button>
+            <button class="btn theme-btn mb-2" data-theme="inversiones">
+              <i class="fas fa-money-bill"></i> Inversiones
+            </button>
+            <button class="btn theme-btn mb-2" data-theme="telecomunicaciones">
+              <i class="fas fa-tower-broadcast"></i> Telecomunicaciones
+            </button>
+            <button class="btn theme-btn mb-2" data-theme="infraestructura">
+              <i class="fas fa-location-dot"></i> Infraestructura
+            </button>
               <button class="btn theme-btn mb-2" data-theme="riesgo">
                 <i class="fas fa-triangle-exclamation"></i> Riesgos - Amenazas
               </button>
               <button class="btn theme-btn mb-2" data-theme="planificacion">
                 <i class="fas fa-file-lines"></i> I. Planificación Territorial
               </button>
-              
+            <div class="sidebar-footer mt-auto pt-3">
+              <button class="btn theme-btn mb-3 w-100" data-bs-toggle="modal" data-bs-target="#welcomeModal">
+                <i class="fas fa-info-circle"></i> Información
+              </button>
+              <div class="logo-pill-container bg-light rounded-3 p-2">
+                <div class="d-flex justify-content-center gap-2">
+                  <img src="assets/img/logo_corfo.png" alt="corfo" class="sidebar-logo">
+                  <img src="assets/img/logo-codesser.png" alt="codesser" class="sidebar-logo">
+                  <img src="assets/img/Logo Andes.jpg" alt="andesvalue" class="sidebar-logo">
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- Icono de Información -->
-          <button class="btn btn-info position-absolute bottom-0 start-50 translate-middle-x mb-3" type="button" data-bs-toggle="modal" data-bs-target="#welcomeModal">
-            <i class="fas fa-info-circle"></i>
-          </button>
         </div>
       </div>
 
@@ -130,16 +140,17 @@
     </div>
   </div>
 
-  <!-- Botón Flotante para Sidebar Derecho (Escritorio) -->
-  <button class="btn btn-primary position-fixed top-50 end-0 translate-middle-y me-3 d-none d-md-block" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="sidebar-toggle-button">
+  <!-- Botón flotante sidebar derecho -->
+  <button class="btn btn-primary position-fixed top-50 end-0 translate-middle-y me-3 d-none d-md-block" 
+          data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" id="sidebar-toggle-button">
     <i class="fas fa-arrow-left"></i>
   </button>
 
-  <!-- Sidebar Derecho -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <!-- Sidebar derecho -->
+  <div class="offcanvas offcanvas-end" id="offcanvasRight">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasRightLabel">Controles</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <h5 class="offcanvas-title">Controles</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body p-3">
       <button class="btn btn-secondary w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#layers-collapse" aria-expanded="true" aria-controls="layers-collapse">
@@ -167,18 +178,24 @@
     </div>
   </div>
 
-  <!-- Modal Bienvenida -->
-  <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+  <!-- Modal de bienvenida -->
+  <div class="modal fade" id="welcomeModal">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="welcomeModalLabel">Bienvenido/a</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title">Bienvenido/a</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <p>Bienvenido/a al visor territorial de nuestro proyecto. Este espacio está diseñado para proporcionarte una visión detallada de diversas temáticas geográficas relacionadas con minería, energía, telecomunicaciones y agricultura.</p>
-          <p>Utiliza el menú lateral para seleccionar diferentes temas y explorar capas temáticas relevantes. Además, puedes gestionar las capas y sus respectivas configuraciones desde el sidebar derecho.</p>
-          <p>Esperamos que encuentres valiosa información y que esta herramienta sea útil para tus investigaciones y proyectos.</p>
+          <p>Bienvenido/a al visor territorial del <b>"Programa Territorial Integrado (PTI) Fortalecimiento productivo sostenible de La Higuera."</b>. Este espacio está diseñado para proporcionarte una visión territorial de la comuna la Higuera en diversas dimensiones socioeconomicas.</p>
+          <p>Utiliza el menú lateral "Izquierdo" para explorar las diferentes dimensiones. Además, puedes gestionar las capas y sus respectivas configuraciones desde el sidebar derecho.</p>
+          <p>Producción Cartográfica: <a href="http://andesvalue.com/" target="_blank">Consultora Andes Value Research</a> (<a href="mailto:diegovelasquezf@gmail.com">Diego Velásquez F.</a>), para la Corporación de Fomento en marco del proyecto "Programa Territorial Integrado (PTI) Fortalecimiento productivo sostenible de La Higuera.".</p>
+          <p>La información contenida en el Visor es de caracter REFERENCIAL, por lo tanto puede presentar inconsistencias con el objeto que se esta representando. Las capas de información contenidas en el Visor, provienen de distintas fuentes de proyección geográfica, realizándose una transformación al datum WGS 1984, por lo que es responsabilidad del usuario verificar su exactitud y vigencia. </p>
+          <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 mt-3 logo-container">
+            <img src="assets/img/logo_corfo.png" alt="corfo" class="img-fluid modal-logo">
+            <img src="assets/img/logo-codesser.png" alt="codesser" class="img-fluid modal-logo">
+            <img src="assets/img/Logo Andes.jpg" alt="andesvalue" class="img-fluid modal-logo">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -193,12 +210,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
   <script src="js/config.js"></script>
   <script src="js/app.js"></script>
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      var myModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
-      myModal.show();
+      new bootstrap.Modal(document.getElementById('welcomeModal')).show();
     });
   </script>
 </body>
