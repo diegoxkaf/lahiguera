@@ -207,13 +207,32 @@ function bindPopup(feature, layer, capaNombre, tema) {
     let contenido = '<div class="popup-content">';
 
     // Agregar el nombre personalizado de la capa como un encabezado
-    contenido += `<h6>${nombrePersonalizado}</h6>`; // Puedes ajustar el nivel del encabezado (h6, h5, etc.)
+    contenido += `<h6>${nombrePersonalizado}</h6>`;
 
     campos.forEach(campo => {
-        const alias = config.alias[campo] || campo; // Obtener el alias o usar el campo original
-        const valor = feature.properties[campo] !== undefined ? feature.properties[campo] : 'No disponible';
+        const alias = config.alias[campo] || campo;
+        let valor = feature.properties[campo] !== undefined ? feature.properties[campo] : 'No disponible';
+
+        // Asegurarse de que valor es una cadena antes de usar match()
+        if (typeof valor === 'string') {
+            const urlRegex = /(https?:\/\/[^\s]+)/gi;
+            const urlMatch = valor.match(urlRegex);
+
+            if (urlMatch) {
+                // Si hay una URL, crear un hipervínculo
+                const texto = valor.replace(urlRegex, '').trim(); // Obtener el texto antes o después de la URL
+                const url = urlMatch[0]; // Tomar la primera URL encontrada
+                if (texto) {
+                    valor = `${texto} <a href="${url}" target="_blank">${url}</a>`;
+                } else {
+                    valor = `<a href="${url}" target="_blank">${url}</a>`;
+                }
+            }
+        }
+
         contenido += `<p><strong>${alias}:</strong> ${valor}</p>`;
     });
+
     contenido += '</div>';
     layer.bindPopup(contenido);
 }
@@ -278,7 +297,7 @@ function agregarEtiquetas(layer, capaConfig) {
             permanent: true, // Mantener la etiqueta siempre visible
             direction: 'center', // Centrar el tooltip con respecto a la posición
             className: 'custom-outlined-label-tooltip', // Aplicar nuestra clase personalizada para estilo
-            offset: L.point(0, 0), // Ajustar el desplazamiento si es necesario
+            offset: L.point(0, -11), // Ajustar el desplazamiento si es necesario
             opacity: 1 // Asegurar que la opacidad sea 1 para visibilidad
         })
         .setContent(labelContentHTML)
