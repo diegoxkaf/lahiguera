@@ -90,7 +90,7 @@ const mineriaConfig = {
             iconos: {
                 'Ag': 'ag.png',
                 ' ': 'sin_valor.png',
-                'Au-(Zn)': 'ag_zn.png',
+                'Au-(Zn)': 'au_zn.png',
                 'Ag-(Cu)': 'au_cu.png',
                 'Ag-(Cu, Mn)':'ag_cu_mn.png',
                 'Au':'au.png',
