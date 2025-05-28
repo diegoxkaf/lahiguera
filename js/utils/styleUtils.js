@@ -22,10 +22,10 @@ export function getPointStyle(feature, configCapa) {
     let iconUrl = configCapa.estiloAlternativo?.iconUrl;
 
     if (configCapa.iconos && atributoValor && configCapa.iconos[atributoValor]) {
-        iconUrl = `/assets/icons/${configCapa.iconos[atributoValor]}`;
+        iconUrl = `./assets/icons/${configCapa.iconos[atributoValor]}`;
     } else {
         if (configCapa.estiloAlternativo && configCapa.estiloAlternativo.iconUrl) {
-            iconUrl = `/assets/icons/${configCapa.estiloAlternativo.iconUrl}`;
+            iconUrl = `./assets/icons/${configCapa.estiloAlternativo.iconUrl}`;
         }
     }
 
