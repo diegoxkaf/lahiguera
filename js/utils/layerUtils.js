@@ -10,7 +10,7 @@ const layerState = {
     capasOrdenadas: []
 };
 
-const GEOJSON_PATH = '/geojson/'; //  Ruta base a los archivos GeoJSON, ahora relativa al repositorio
+const GEOJSON_PATH = '${BASE_PATH}/geojson/'; //  Ruta base a los archivos GeoJSON, ahora relativa al repositorio
 
 export function initializeLayerState(map, capasPorNombre, capasOrdenadas) {
     layerState.map = map;
