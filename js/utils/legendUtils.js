@@ -147,7 +147,7 @@ function generarLeyendaAutomatica(tema, temasConfig, container) {
                 iconBox.style.flexShrink = '0';
                 
                 const icon = document.createElement('img');
-                icon.src = `/assets/icons/${iconFile}`;
+                icon.src = `./assets/icons/${iconFile}`;
                 icon.style.width = '100%';
                 icon.style.height = '100%';
                 icon.style.objectFit = 'contain';
