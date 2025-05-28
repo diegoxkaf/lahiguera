@@ -8,14 +8,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/leaflet-label@0.2.1-0/dist/leaflet.label.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/desktop.css" media="(min-width: 769px)">
+  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 768px)">
+  <link href="https://cdn.jsdelivr.net/npm/leaflet.label@0.2.4/dist/leaflet.label.css" rel="stylesheet">
   <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue d-md-none fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Visor Territorial PTI La Higuera</a>
-      <div class="ms-auto">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <span class="navbar-brand">Visor Territorial PTI La Higuera</span>
+      <div class="buttons-container d-flex align-items-center gap-2">
         <button class="btn btn-outline-light me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft">
           <i class="fas fa-bars"></i>
         </button>
@@ -62,21 +64,21 @@
             <button class="btn theme-btn mb-2" data-theme="infraestructura">
               <i class="fas fa-location-dot"></i> Infraestructura
             </button>
-              <button class="btn theme-btn mb-2" data-theme="riesgo">
+              <button class="btn theme-btn mb-2" data-theme="riesgos">
                 <i class="fas fa-triangle-exclamation"></i> Riesgos - Amenazas
               </button>
               <button class="btn theme-btn mb-2" data-theme="planificacion">
                 <i class="fas fa-file-lines"></i> I. Planificación Territorial
               </button>
             <div class="sidebar-footer mt-auto pt-3">
-              <button class="btn theme-btn mb-3 w-100" data-bs-toggle="modal" data-bs-target="#welcomeModal">
+              <button class="btn theme-btn mb-2 w-100" data-bs-toggle="modal" data-bs-target="#welcomeModal">
                 <i class="fas fa-info-circle"></i> Información
               </button>
               <div class="logo-pill-container bg-light rounded-3 p-2">
                 <div class="d-flex justify-content-center gap-2">
-                  <img src="assets/img/logo_corfo.png" alt="corfo" class="sidebar-logo">
-                  <img src="assets/img/logo-codesser.png" alt="codesser" class="sidebar-logo">
-                  <img src="assets/img/Logo Andes.jpg" alt="andesvalue" class="sidebar-logo">
+                  <a href="https://www.corfo.cl/sites/cpp/homecorfo#" target="_blank"><img src="assets/img/logo_corfo.png" alt="corfo" class="img-fluid modal-logo"></a>
+                  <a href="https://codesser.cl/" target="_blank"><img src="assets/img/logo-codesser.png" alt="codesser" class="img-fluid modal-logo"></a>
+                  <a href="http://andesvalue.com/" target="_blank"><img src="assets/img/Logo Andes.jpg" alt="andesvalue" class="img-fluid modal-logo"></a>
                 </div>
               </div>
             </div>
@@ -111,23 +113,26 @@
             <button class="btn theme-btn mb-2" data-theme="infraestructura">
               <i class="fas fa-location-dot"></i> Infraestructura
             </button>
-              <button class="btn theme-btn mb-2" data-theme="riesgo">
+              <button class="btn theme-btn mb-2" data-theme="riesgos">
                 <i class="fas fa-triangle-exclamation"></i> Riesgos - Amenazas
               </button>
               <button class="btn theme-btn mb-2" data-theme="planificacion">
                 <i class="fas fa-file-lines"></i> I. Planificación Territorial
               </button>
-            <div class="sidebar-footer mt-auto pt-3">
-              <button class="btn theme-btn mb-3 w-100" data-bs-toggle="modal" data-bs-target="#welcomeModal">
-                <i class="fas fa-info-circle"></i> Información
-              </button>
-              <div class="logo-pill-container bg-light rounded-3 p-2">
-                <div class="d-flex justify-content-center gap-2">
-                  <img src="assets/img/logo_corfo.png" alt="corfo" class="sidebar-logo">
-                  <img src="assets/img/logo-codesser.png" alt="codesser" class="sidebar-logo">
-                  <img src="assets/img/Logo Andes.jpg" alt="andesvalue" class="sidebar-logo">
+              <div class="sidebar-footer mt-auto pt-2">
+                <div class="footer-item">  <button class="btn theme-btn mb-3" data-bs-toggle="modal" data-bs-target="#welcomeModal">
+                        <i class="fas fa-info-circle"></i> Información
+                    </button>
                 </div>
-              </div>
+                <!-- Footer Sidebar-->
+                <div class="footer-item">  <div class="logo-pill-container bg-light rounded-3 p-2">
+                        <div class="d-flex justify-content-center gap-2">
+                          <a href="https://www.corfo.cl/sites/cpp/homecorfo#" target="_blank"><img src="assets/img/logo_corfo.png" alt="corfo" class="img-fluid modal-logo"></a>
+                          <a href="https://codesser.cl/" target="_blank"><img src="assets/img/logo-codesser.png" alt="codesser" class="img-fluid modal-logo"></a>
+                          <a href="http://andesvalue.com/" target="_blank"><img src="assets/img/Logo Andes.jpg" alt="andesvalue" class="img-fluid modal-logo"></a>
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
@@ -153,20 +158,37 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body p-3">
+      <!-- Capas Temáticas -->
       <button class="btn btn-secondary w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#layers-collapse" aria-expanded="true" aria-controls="layers-collapse">
         <i class="fas fa-layer-group"></i> Capas Temáticas
       </button>
       <div class="collapse show" id="layers-collapse">
-        <div class="layers-container" id="sidebar-layers" style="height: 65%; overflow-y: auto;">
+        <!-- Para desktop -->
+        <div class="layers-container d-none d-md-block" id="sidebar-layers" style="max-height: 300px; overflow-y: auto;">
           <!-- Aquí se insertarán las capas temáticas -->
         </div>
-        <button class="btn btn-secondary w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#base-layers-collapse" aria-expanded="true" aria-controls="base-layers-collapse">
-          <i class="fas fa-globe"></i> Capas Base
-        </button>
-        <div id="sidebar-capas-base" class="base-layers-container" style="height: 20%; overflow-y: auto;">
-          <!-- Aquí se insertarán las capas base -->
+        <!-- Para móvil -->
+        <div class="layers-container d-md-none" id="sidebar-layers-mobile" style="max-height: 300px; overflow-y: auto;">
+          <!-- Aquí se insertarán las capas temáticas móviles -->
         </div>
       </div>
+  
+      <!-- Capas Base -->
+      <button class="btn btn-secondary w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#base-layers-collapse" aria-expanded="true" aria-controls="base-layers-collapse">
+        <i class="fas fa-globe"></i> Capas Base
+      </button>
+      <div class="collapse show" id="base-layers-collapse">
+        <!-- Para desktop -->
+        <div id="sidebar-base-layers" class="base-layers-container d-none d-md-block" style="max-height: 200px; overflow-y: auto;">
+          <!-- Aquí se insertarán las capas base -->
+        </div>
+        <!-- Para móvil -->
+        <div id="sidebar-base-layers-mobile" class="base-layers-container d-md-none" style="max-height: 200px; overflow-y: auto;">
+          <!-- Aquí se insertarán las capas base móviles -->
+        </div>
+      </div>
+  
+      <!-- Leyenda -->
       <button class="btn btn-secondary w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#legend-collapse" aria-expanded="true" aria-controls="legend-collapse">
         <i class="fas fa-map"></i> Leyenda
       </button>
@@ -192,9 +214,9 @@
           <p>Producción Cartográfica: <a href="http://andesvalue.com/" target="_blank">Consultora Andes Value Research</a> (<a href="mailto:diegovelasquezf@gmail.com">Diego Velásquez F.</a>), para la Corporación de Fomento en marco del proyecto "Programa Territorial Integrado (PTI) Fortalecimiento productivo sostenible de La Higuera.".</p>
           <p>La información contenida en el Visor es de caracter REFERENCIAL, por lo tanto puede presentar inconsistencias con el objeto que se esta representando. Las capas de información contenidas en el Visor, provienen de distintas fuentes de proyección geográfica, realizándose una transformación al datum WGS 1984, por lo que es responsabilidad del usuario verificar su exactitud y vigencia. </p>
           <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 mt-3 logo-container">
-            <img src="assets/img/logo_corfo.png" alt="corfo" class="img-fluid modal-logo">
-            <img src="assets/img/logo-codesser.png" alt="codesser" class="img-fluid modal-logo">
-            <img src="assets/img/Logo Andes.jpg" alt="andesvalue" class="img-fluid modal-logo">
+            <a href="https://www.corfo.cl/sites/cpp/homecorfo#" target="_blank"><img src="assets/img/logo_corfo.png" alt="corfo" class="img-fluid modal-logo"></a>
+            <a href="https://codesser.cl/" target="_blank"><img src="assets/img/logo-codesser.png" alt="codesser" class="img-fluid modal-logo"></a>
+            <a href="http://andesvalue.com/" target="_blank"><img src="assets/img/Logo Andes.jpg" alt="andesvalue" class="img-fluid modal-logo"></a>
           </div>
         </div>
         <div class="modal-footer">
@@ -204,17 +226,18 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/leaflet-label@0.2.1-0/dist/leaflet.label.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet.label@0.2.4/dist/leaflet.label.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/app.js"></script>
+  <script type="module" src="js/app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      new bootstrap.Modal(document.getElementById('welcomeModal')).show();
-    });
-  </script>
+  const welcomeModal = document.getElementById('welcomeModal');
+  if (welcomeModal) {
+    new bootstrap.Modal(welcomeModal).show();
+  }
+});
+    </script>
 </body>
 </html>
