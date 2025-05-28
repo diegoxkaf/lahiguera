@@ -1,102 +1,120 @@
-/* Estilos generales */
+/* ========================================
+   ESTILOS BASE - COMÚN PARA TODAS LAS PANTALLAS
+   ======================================== */
+
+/* Variables CSS para consistencia */
+:root {
+  --color-primary: #1a1a2e;
+  --color-secondary: #2c2c54;
+  --color-accent: #45B69C;
+  --color-accent-hover: #38a78c;
+  --color-light: #ffffff;
+  --color-gray: #6c757d;
+  --color-gray-light: #f8f9fa;
+  --navbar-height: 60px;
+  --navbar-vertical-padding: 0.5rem;
+  --navbar-horizontal-gap: 1rem;
+  --sidebar-width: 320px;
+  --border-radius: 0.375rem;
+  --transition-standard: all 0.3s ease;
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-heavy: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset y estilos generales */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  /*
-    Para compensar la altura del navbar en modo móvil,
-    se agrega un padding-top en pantallas pequeñas
-    (generalmente 56px es la altura de un navbar standard).
-  */
+  margin: 0;
+  padding: 0;
 }
+
 .container-fluid {
   padding: 0 !important;
   margin: 0 !important;
 }
+
 .row.g-0 {
   margin: 0 !important;
 }
+
 .col-12, .col-md-10, .col-md-2 {
   padding: 0 !important;
 }
-/* Sidebar izquierdo */
-.sidebar {
-  height: 100vh;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; /* Nuevo: Contiene el contenido */
-}
+
+/* Colores de fondo */
 .bg-dark-blue {
-  background-color: #1a1a2e;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto; /* Nuevo: Habilita scroll vertical */
+  background-color: var(--color-primary);
 }
+
 .text-accent {
-  color: #45B69C;
+  color: var(--color-accent);
 }
-/* Botones del sidebar */
+
+/* Botones temáticos base */
 .theme-btn {
-  background: #2c2c54;
-  color: white !important;
+  background: var(--color-secondary);
+  color: var(--color-light) !important;
   text-align: left;
-  transition: all 0.3s;
+  transition: var(--transition-standard);
   border: none;
-  width: 100%;
-  padding: 0.75rem 1rem; /* Ajuste de padding */
-  margin-bottom: 0.5rem; /* Reducir margen */
-  white-space: normal; /* Permite ajuste de texto */
-  word-break: break-word; /* Rompe palabras largas */
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 400;
 }
+
 .theme-btn:hover {
-  background: #45B69C;
-  transform: translateX(5px);
+  background-color: #3b3b6b;
+  color: var(--color-light) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
 }
 
-/* Offcanvas móvil */
-.offcanvas-start {
-  max-width: 280px; /* Ancho máximo reducido */
+.theme-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(69, 182, 156, 0.25);
 }
 
-.offcanvas-body.bg-dark-blue {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
+.theme-btn.active {
+  background-color: var(--color-accent);
+  color: var(--color-primary) !important;
+  font-weight: 600;
+  border: 1px solid #3c9c86;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Mapa */
+.theme-btn i {
+  margin-right: 0.75rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Mapa base */
 #map {
-  height: 100vh;
-  background: #f8f9fa;
+  background: var(--color-gray-light);
+  width: 100%;
+  height: 100%;
 }
-/* Popups personalizados */
+
+/* Popups y tooltips de Leaflet */
 .leaflet-popup-content {
   min-width: 200px;
   max-height: 300px;
   overflow-y: auto;
 }
+
 .popup-content p {
   margin: 5px 0;
   font-size: 0.9em;
 }
-/* Leyenda */
-.legend-container {
-  padding: 10px;
-}
-.legend-item {
-  display: flex;
-  align-items: center;
-  margin: 5px 0;
-}
-.legend-color {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  border: 1px solid #666;
-}
 
-/* Estilos para etiquetas con contorno */
 .leaflet-tooltip.custom-outlined-label-tooltip {
   background: none !important;
   border: none !important;
@@ -111,178 +129,265 @@ body {
   -webkit-text-stroke-color: #FF0000;
 }
 
-/* Estilos para el sidebar derecho */
-.layers-container,
+/* Leyenda base */
 .legend-container {
-  padding: 5px;
+  padding: 10px;
 }
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 1px solid #666;
+}
+
+/* Controles de capas base */
+.layers-container {
+  padding: 10px;
+}
+
+.base-layers-container {
+  padding: 10px;
+}
+
+/* Botones secundarios */
 .btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: var(--color-gray);
+  border-color: var(--color-gray);
+  transition: var(--transition-standard);
 }
+
 .btn-secondary:hover {
   background-color: #5a6268;
   border-color: #545b62;
 }
+
+/* Formularios */
+.form-check-label:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-check-input:disabled + .form-check-label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Logos */
+.modal-logo {
+  max-height: 50px;
+  width: auto;
+  transition: var(--transition-standard);
+}
+
+.modal-logo:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.logo-container {
+  max-width: 100%;
+  padding: 0;
+}
+
+.logo-container img {
+  margin: 0 10px;
+  flex-shrink: 0;
+}
+
+.logo-pill-container {
+  border-radius: var(--border-radius);
+  transition: var(--transition-standard);
+}
+
+.logo-pill-container:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+/* Offcanvas base */
 .offcanvas-body {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
 }
+
 .collapse.show {
   flex-grow: 1;
 }
-/* Botón flotante */
-#sidebar-toggle-button,
-#sidebar-left-toggle-button {
-  z-index: 1050;
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #45B69C;
-  border: none;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  font-size: 18px;
-  transition: all 0.3s ease;
-}
-#sidebar-toggle-button:hover,
-#sidebar-left-toggle-button:hover {
-  background-color: #38a78c;
-  transform: translateY(-50%) scale(1.1);
-}
-#sidebar-toggle-button {
-  right: 15px;
-}
-#sidebar-left-toggle-button {
-  left: 15px;
+
+/* Utilidades */
+.w-100 {
+  width: 100% !important;
 }
 
-/* Logos en sidebar */
-.logos-sidebar-container {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1rem;
+.mt-auto {
+  margin-top: auto !important;
 }
 
-.logo-container {
+.navbar {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  transition: none !important;
 }
 
-.sidebar-logo {
-  max-height: 35px;
-  width: auto;
-  transition: all 0.3s ease;
+.navbar .navbar-brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-light);
+  margin-right: auto;
 }
 
-.sidebar-logo:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
+.navbar .ms-auto {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.logo-pill-container {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  max-width: 95%;
-  margin: 0 auto;
-  padding: 0.5rem;
+
+/* Configuración global para todos los popups Leafleat*/
+.leaflet-popup-content-wrapper {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  line-height: 1.4 !important;
 }
 
-.logo-pill-container:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+/* Contenedor principal del popup personalizado */
+.custom-popup {
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+  color: #333 !important;
+  margin: 0 !important;
+  padding: 4px 0 !important;
 }
 
-/* Footer del sidebar */
-.sidebar-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  margin-top: 1rem;
+/* Título del popup - más pequeño y en negrita */
+.custom-popup .popup-title {
+  font-size: 13px !important;
+  font-weight: bold !important;
+  margin: 0 0 8px 0 !important;
+  padding: 0 !important;
+  color: var(--color-primary, #1a1a2e) !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  padding-bottom: 4px !important;
 }
 
-.sidebar-footer .theme-btn {
-  background: #3a3a5c;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Párrafos del contenido del popup */
+.custom-popup p {
+  font-size: 11px !important;
+  margin: 3px 0 !important;
+  padding: 0 !important;
+  line-height: 1.3 !important;
 }
 
-.sidebar-footer .theme-btn:hover {
-  background: #45B69C;
-  transform: none;
+/* Etiquetas en negrita dentro del contenido */
+.custom-popup p strong {
+  font-weight: 600 !important;
+  color: #222 !important;
+  font-size: 11px !important;
 }
 
-/* Ajustes Responsive */
+/* Enlaces dentro del popup */
+.custom-popup a {
+  color: var(--color-accent, #45B69C) !important;
+  text-decoration: none !important;
+  font-size: 11px !important;
+  word-break: break-word !important;
+}
+
+.custom-popup a:hover {
+  text-decoration: underline !important;
+  color: var(--color-accent-hover, #38a78c) !important;
+}
+
+/* Ajustes específicos para el contenedor del popup de Leaflet */
+.leaflet-popup-content {
+  margin: 8px 12px !important;
+  line-height: 1.3 !important;
+  font-size: 12px !important;
+  min-width: 180px !important;
+  max-width: 300px !important;
+}
+
+/* Punta del popup */
+.leaflet-popup-tip-container {
+  margin: 0 auto !important;
+}
+
+/* Botón de cierre del popup */
+.leaflet-popup-close-button {
+  font-size: 16px !important;
+  padding: 2px 6px !important;
+  color: #666 !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: #333 !important;
+  background-color: #f0f0f0 !important;
+}
+
+/* Responsive - ajustes para móvil */
 @media (max-width: 768px) {
-  .navbar.fixed-top {
-    z-index: 2000;
+  .custom-popup {
+      font-size: 11px !important;
   }
-  body {
-    padding-top: 56px;
+  
+  .custom-popup .popup-title {
+      font-size: 12px !important;
   }
-  .sidebar {
-    display: none;
+  
+  .custom-popup p {
+      font-size: 10px !important;
   }
-  #map {
-    height: 100vh;
-    margin: 0 !important;
+  
+  .custom-popup p strong {
+      font-size: 10px !important;
   }
-  .offcanvas {
-    width: 100% !important;
+  
+  .custom-popup a {
+      font-size: 10px !important;
   }
-  .offcanvas-body.bg-dark-blue {
-    padding: 0 0.5rem;
-  }
-  .navbar .container-fluid {
-    padding: 0 1rem !important;
-    display:flex;
-    align-items: center;
-  }
-
-  .navbar-brand {
-    margin-right: auto;       /* Empujamos el título a la izquierda */
-    font-size: 1rem;          /* Reducimos el tamaño de la fuente si es necesario */
-  }
-  .navbar .ms-auto {
-    margin-left: 0 !important; /* Reseteamos el margen */
-    display: flex;             /* Flexbox para los íconos */
-    align-items: center;
-  }
-  .theme-btn {
-    font-size: 0.9rem;
-    padding: 0.6rem 0.8rem;
-  }
-  .logo-container {
-    gap: 0.5rem !important;
-  }
-  .logos-sidebar-container {
-    padding: 0.5rem;
-  }
-  .logo-pill-container {
-    max-width: 100%;
-  }
-  .sidebar-footer {
-    padding: 0 0.5rem;
-  }
-  .sidebar-footer .theme-btn {
-    font-size: 0.9rem;
-    padding: 0.5rem;
-  }
-  /* Margen vertical para logos en móvil */
-  .logo-container.flex-column img {
-    margin: 5px 0;
+  
+  .leaflet-popup-content {
+      margin: 6px 10px !important;
+      min-width: 150px !important;
+      max-width: 250px !important;
   }
 }
 
-.modal-logo {
-  max-height: 50px;
-  width: auto;
-}
-
-/* Margen horizontal para logos en escritorio */
-.logo-container img {
-  margin: 0 10px;
-  flex-shrink: 0;
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .custom-popup {
+      font-size: 10px !important;
+  }
+  
+  .custom-popup .popup-title {
+      font-size: 11px !important;
+      margin-bottom: 6px !important;
+  }
+  
+  .custom-popup p {
+      font-size: 9px !important;
+      margin: 2px 0 !important;
+  }
+  
+  .custom-popup p strong {
+      font-size: 9px !important;
+  }
+  
+  .custom-popup a {
+      font-size: 9px !important;
+  }
+  
+  .leaflet-popup-content {
+      margin: 4px 8px !important;
+      min-width: 120px !important;
+      max-width: 200px !important;
+  }
 }
