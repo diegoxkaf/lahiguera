@@ -23,6 +23,9 @@ export const capasPorNombre = {};
 export const capasOrdenadas = [];
 export let activeTemaName = 'mineria';
 
+// BASE_PATH en caso que la web este en un subdirectorio, en caso que el mapa se carge en el directorio raíz del dominio comentar el basepath
+export const BASE_PATH = '/lahiguera';
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Inicializando aplicación...');
     
