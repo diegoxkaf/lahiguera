@@ -1,5 +1,7 @@
 // Funciones para aplicar estilos a las capas.
 
+import { BASE_PATH } from '../app.js';
+
 /**
  * Obtiene el estilo de un punto para una característica GeoJSON.
  * @param {object} feature - La característica GeoJSON.
@@ -22,10 +24,10 @@ export function getPointStyle(feature, configCapa) {
     let iconUrl = configCapa.estiloAlternativo?.iconUrl;
 
     if (configCapa.iconos && atributoValor && configCapa.iconos[atributoValor]) {
-        iconUrl = `/assets/icons/${configCapa.iconos[atributoValor]}`;
+        iconUrl = `${BASE_PATH}/assets/icons/${configCapa.iconos[atributoValor]}`; // Añade BASE_PATH
     } else {
         if (configCapa.estiloAlternativo && configCapa.estiloAlternativo.iconUrl) {
-            iconUrl = `/assets/icons/${configCapa.estiloAlternativo.iconUrl}`;
+            iconUrl = `${BASE_PATH}/assets/icons/${configCapa.estiloAlternativo.iconUrl}`; // Añade BASE_PATH
         }
     }
 
@@ -33,20 +35,13 @@ export function getPointStyle(feature, configCapa) {
         return {
             icon: L.icon({
                 iconUrl: iconUrl,
-                iconSize: configCapa.estiloAlternativo?.iconSize || [25, 25],
-                iconAnchor: configCapa.estiloAlternativo?.iconAnchor || [12, 25],
-                popupAnchor: configCapa.estiloAlternativo?.popupAnchor || [0, -25]
+                iconSize: configCapa.estiloAlternativo.iconSize || [32, 32],
+                iconAnchor: configCapa.estiloAlternativo.iconAnchor || [16, 32],
+                popupAnchor: configCapa.estiloAlternativo.popupAnchor || [0, -32]
             })
         };
-    } else {
-        return {
-            color: configCapa.estiloAlternativo?.color || '#333',
-            fillColor: configCapa.estiloAlternativo?.fillColor || '#555',
-            radius: configCapa.estiloAlternativo?.radius || 5,
-            weight: configCapa.estiloAlternativo?.weight || 1,
-            fillOpacity: configCapa.estiloAlternativo?.fillOpacity || 0.8
-        };
     }
+    return {};
 }
 
 /**
