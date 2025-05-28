@@ -23,9 +23,6 @@ export const capasPorNombre = {};
 export const capasOrdenadas = [];
 export let activeTemaName = 'mineria';
 
-// BASE_PATH en caso que la web este en un subdirectorio, en caso que el mapa se carge en el directorio raíz del dominio comentar el basepath
-export const BASE_PATH = '/lahiguera';
-
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Inicializando aplicación...');
     
@@ -39,17 +36,24 @@ document.addEventListener('DOMContentLoaded', () => {
     window.currentBaseLayer = currentBaseLayer;
 
     // INICIALIZAR EL ESTADO DE LAS CAPAS
-    initializeLayerState(map, capasPorNombre, capasOrdenadas); // Ya no se necesita pasar BASE_PATH aquí directamente
+    initializeLayerState(map, capasPorNombre, capasOrdenadas);
+
+    // Actualizar sidebars
+    actualizarCapasBase(capasBaseConfig, map);
+    actualizarCapasSidebar(activeTemaName, allTemasConfig);
     
-    // Configurar listeners de capas base
+    // ACTUALIZAR LEYENDA INICIAL
+    actualizarLeyenda(activeTemaName, allTemasConfig);
+
+    // Event listeners para capas base
     setupBaseLayerListeners();
-
-    // Cargar el tema inicial
+    
+    // Configuración inicial de tema
     setupInitialTheme();
-
-    // Configurar listeners de temas
+    
+    // Event listeners para botones de tema
     setupThemeListeners();
-
+    
     console.log('Aplicación inicializada correctamente');
 });
 
