@@ -1,8 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "infraestructura_municipio",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "fid": 203, "OBJECTID": 203.0, "DIRECCION": "Av. La Paz Nº2", "COD_REG": "04", "NOM_REG": "Coquimbo", "COD_PROV": "041", "NOM_PROV": "Elqui", "NOM_COM": "La Higuera", "CUT_2018": "04104", "Descripcion": "Capa de puntos que representan la localización de los municipios de todas las comunas del país (edificio consistorial, según listado de direcciones entregada por el Sistema Nacional de Información Municipal SINIM de la Subsecretaría de Desarrollo Regional SUBDERE). Cuenta con el Código Único Territorial de la comuna. Capa generada por SUBDERE en 2016, con ayuda en la geolocalización de direcciones por Carabineros. Escala nacional. V02 - Actualización de nombres de regiones (según ley 21.074 de 2018) - Actualización de códigos únicos territoriales (según decreto supremo 1.115 de 2018) - Corrección en municipio de Peumo y Mostazal (región del Libertador General Bernardo O¿Higgins) - Reproyección a SIRGAS-Chile V0201 - Corrección en nombre de campo (CUT_2010 a CUT_2018) V03 - Actualización a planilla de direcciones de municipios reportadas por SINIM el 24/04/2020 (cambios en municipios de Talcahuano, Hualpén, Mulchén, Tomé, Alto Biobío, Perquenco y Máfil) V0301 - Corrección en ubicación d", "Origen Data": "Portal de Infraestructura de Datos Espaciales, IDE Chile, Disponible en: https://www.geoportal.cl/geoportal/catalog/35603/Municipios" }, "geometry": { "type": "Point", "coordinates": [ -71.201015402999985, -29.511838825999973 ] } }
-]
-}
