@@ -39,24 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.currentBaseLayer = currentBaseLayer;
 
     // INICIALIZAR EL ESTADO DE LAS CAPAS
-    initializeLayerState(map, capasPorNombre, capasOrdenadas);
-
-    // Actualizar sidebars
-    actualizarCapasBase(capasBaseConfig, map);
-    actualizarCapasSidebar(activeTemaName, allTemasConfig);
+    initializeLayerState(map, capasPorNombre, capasOrdenadas); // Ya no se necesita pasar BASE_PATH aquí directamente
     
-    // ACTUALIZAR LEYENDA INICIAL
-    actualizarLeyenda(activeTemaName, allTemasConfig);
-
-    // Event listeners para capas base
+    // Configurar listeners de capas base
     setupBaseLayerListeners();
-    
-    // Configuración inicial de tema
+
+    // Cargar el tema inicial
     setupInitialTheme();
-    
-    // Event listeners para botones de tema
+
+    // Configurar listeners de temas
     setupThemeListeners();
-    
+
     console.log('Aplicación inicializada correctamente');
 });
 
